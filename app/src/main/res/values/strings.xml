@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Honar Zistan</string>
+    <string name="app_title_fa">هنر زیستن</string>
+    <string name="app_subtitle_fa">کتاب مصور زندگی</string>
+    <string name="author_name_fa">سیاوش علی‌میری</string>
+    <string name="author_name_en">Siavash Ali-Miri</string>
+    <string name="cd_hero_cover">تصویرسازی جلد کتاب هنر زیستن</string>
+    <string name="cd_chapter_art">تصویرسازی فصل</string>
+    <string name="cd_poetry_art">نگارگری باغ شبانه شعر</string>
+    <string name="cd_author_art">نگاره قلم و دوات نویسنده</string>
 </resources>

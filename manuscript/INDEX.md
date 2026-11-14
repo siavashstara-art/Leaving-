@@ -5,7 +5,7 @@
 **معرفی:** «سفری برای شناخت خویشتن، فهم جهان و آموختن هنر بهتر زیستن.»  
 **مؤلف و صاحب اثر:** سیاوش علی‌میری (Siavash Ali-Miri)  
 **تاریخ راه‌اندازی نظام ویراستاری:** 2026-11-13  
-**نسخه بایگانی:** `v0.2.0`
+**نسخه بایگانی:** `v0.4.0`
 
 > **اصل راهبردی تثبیت‌شدهٔ کتاب:** «هدف این اثر تولید انبوه کلمات نیست؛ هدف آن ایجاد معنایی ماندگار در زندگی حتی یک انسان است. ده صفحه عمیق و اثرگذار، از صدها صفحه بی‌ثمر ارزشمندتر است.» *(عین متن خام در `01_original_materials/DOC-000_book_manifesto_original.md` محفوظ است.)*
 
@@ -21,6 +21,8 @@
 | **DOC-003** | فلسفه کیهانی و نظم هستی (Cosmic Philosophy) | 2026-11-13 | **Incomplete Collection** (5 working themes only; full manuscript not received) | Registered in Incomplete Materials (`v0.1`) | تفکیک فرضیه‌های علمی (B) از تفسیرهای فلسفی (C) برای تدوین آتی مشخص شد. | **Deferred / Evolving Collection** (Part V: جهان و هستی) | `v0.1` |
 | **DOC-004** | گفت‌وگوی فلسفی: دانایی، ترس و ناشناخته‌ها (Philosophical Dialogue: Knowledge, Fear, and the Unknown) | 2026-11-13 | **Incomplete Dialogue** (Themes + abandoned-house motif present; full dialogue not received) | Registered in Incomplete Materials (`v0.1`) | در انتظار متن کامل گفت‌وگوی اصلی برای تدوین وفادارانه. | **Deferred / Incomplete Collection** (Part I / Part V / Part VI bridge) | `v0.1` |
 | **DOC-005** | قدرت یک کلمه؛ وقتی معنا از هزاران جمله پیشی می‌گیرد (The Power of One Word) | 2026-11-13 | **Verbatim Complete** in `01_original_materials/DOC-005_power_of_one_word_original.md` | **Orthography-only copy** in `02_edited_manuscripts/DOC-005_power_of_one_word_edited.md` (بدون بازنویسی آزاد) | ثبت انحصاری به نام مؤلف؛ بدون نقل‌قول بیرونی؛ بدون تکثیر تکراری در سایر فصل‌ها. | **Independent Archive Section** (`04_independent_essays/DOC-005_power_of_one_word.md` — عنوان و جایگاه فعلاً پیشنهادی) | `v0.1` |
+| **DOC-006** | قدرتی که در سکوت نهفته است (The Power Hidden in Silence) | 2026-11-14 | **Verbatim Complete** in `01_original_materials/DOC-006_power_of_silence_original.md` | **Orthography-only copy** in `02_edited_manuscripts/DOC-006_power_of_silence_edited.md` (بدون بازنویسی آزاد) | ثبت انحصاری به نام مؤلف؛ تفکیک سکوت خردمندانه از ترس و ناتوانی؛ بدون تکثیر در سایر فصل‌ها. | **Independent Archive Section / Chapter Candidate** (`04_independent_essays/DOC-006_power_of_silence.md` — عنوان و جایگاه فعلاً پیشنهادی) | `v0.1` |
+| **DOC-007** | از شناخت جهان تا شناخت خویشتن (From World to Self: Finding Meaning) | 2026-11-14 | **Verbatim Complete** in `01_original_materials/DOC-007_world_to_self_original.md` | **Orthography-only copy** in `02_edited_manuscripts/DOC-007_world_to_self_edited.md` (بدون بازنویسی آزاد) | ثبت انحصاری به نام مؤلف؛ پیوند نظم جهان با آرامش درونی و مکث میان محرک و پاسخ؛ بدون تکثیر در فصل‌ها. | **Independent Archive Section / Core Chapter Candidate** (`04_independent_essays/DOC-007_world_to_self.md` — عنوان و جایگاه فعلاً پیشنهادی) | `v0.1` |
 
 ---
 
@@ -29,7 +31,7 @@
 1. `01_original_materials/` — نگهداری بدون تغییر متن‌های اصلی دریافت‌شده از نویسنده (`DOC-000`، `DOC-001`، `DOC-005`)
 2. `02_edited_manuscripts/` — نسخه‌های ویراستاری‌شده و تفکیک‌شده با برچسب شفاف تغییرها (`DOC-000`، `DOC-001`، `DOC-005`)
 3. `03_approved_book_chapters/` — فصل‌های تأییدشده نهایی توسط نویسنده (در حال حاضر خالی؛ در انتظار تأیید مؤلف)
-4. `04_independent_essays/` — جستارها و بخش‌های مستقل (`DOC-002: فلسفه شهر توانا` و `DOC-005: قدرت یک کلمه`)
+4. `04_independent_essays/` — جستارها و بخش‌های مستقل (`DOC-002`، `DOC-005`، `DOC-006` و `DOC-007: از شناخت جهان تا شناخت خویشتن`)
 5. `05_poems_and_personal_writings/` — اشعار و نوشته‌های شخصی (یادآوری هم‌راستایی با نمونه اشعار موجود در اپ اندروید)
 6. `06_research_and_references/` — استانداردهای تفکیک علمی/فلسفی (رده‌های A تا E) و ارجاعات تأییدشده
 7. `07_incomplete_materials/` — آثار ناتمام یا نیازمند منبع اصلی (`DOC-003` و `DOC-004`)

@@ -98,6 +98,15 @@ data class BookSection(
   val blocks: List<ReaderBlock>,
 )
 
+enum class ManuscriptApprovalStatus(
+  val titleFa: String,
+  val titleEn: String,
+) {
+  APPROVED("تأییدشده نهایی", "Approved"),
+  DRAFT_PENDING_REVIEW("پیش‌نویس در دست بررسی", "Draft (Unapproved)"),
+  INCOMPLETE("ناقص — نیازمند منبع اصلی", "Incomplete"),
+}
+
 data class Chapter(
   val id: String,
   val partId: String,
@@ -112,10 +121,12 @@ data class Chapter(
   val closingSummaryFa: String,
   val closingSummaryEn: String,
   val readingMinutes: Int,
-  @DrawableRes val editorialPlateRes: Int? = null,
+  @param:DrawableRes val editorialPlateRes: Int? = null,
   val editorialPlateAltFa: String? = null,
   val editorialPlateAltEn: String? = null,
   val sections: List<BookSection>,
+  val approvalStatus: ManuscriptApprovalStatus = ManuscriptApprovalStatus.APPROVED,
+  val manuscriptRevision: Int = 1,
 ) {
   val blocks: List<ReaderBlock>
     get() = sections.flatMap { it.blocks }

@@ -5,6 +5,7 @@ import com.example.model.BookPart
 import com.example.model.BookSection
 import com.example.model.Chapter
 import com.example.model.ContentCategory
+import com.example.model.ManuscriptApprovalStatus
 import com.example.model.ReaderBlock
 
 object BookCatalog {
@@ -40,6 +41,14 @@ object BookCatalog {
         titleEn = "Part III: Health, Wellbeing & Balanced Living",
         descriptionFa = "عادت‌های ساده و سازنده‌ی روزانه برای تندرستی جسم، آرامش روان و کیفیت خواب.",
         descriptionEn = "Practical, contemplative rhythms for physical vitality, emotional calm, and restorative rest.",
+      ),
+      BookPart(
+        id = "part_4",
+        number = 4,
+        titleFa = "دفتر چهارم: اخلاق، مسئولیت و دست‌نوشته‌های در دست تدوین",
+        titleEn = "Part IV: Ethics, Responsibility & Working Manuscripts",
+        descriptionFa = "فصل‌های در دست ویرایش و تأیید مؤلف؛ از جمله جستار اخلاق و معماری بقای جهان.",
+        descriptionEn = "Working editorial drafts awaiting final author approval before audiobook publication.",
       ),
     )
 
@@ -367,6 +376,70 @@ object BookCatalog {
                   ReaderBlock.Prose(
                     textFa = "خوابِ باکیفیت از نیم‌ساعت پیش از بستن چشم‌ها آغاز می‌شود. نورِ تند و خبرهای اضطراب‌آور را کنار بگذارید، جرعه‌ای آبِ گرم بنوشید و به بدن یادآوری کنید که کار امروز به پایان رسیده است.",
                     textEn = "Restorative sleep begins thirty minutes before closing your eyes. Set aside harsh screens and urgent news, sip warm water, and remind your body that today's labor is complete.",
+                  ),
+                ),
+            ),
+          ),
+      ),
+      Chapter(
+        id = "ch_07",
+        partId = "part_4",
+        number = 7,
+        category = ContentCategory.LIVING_ART,
+        titleFa = "اخلاق؛ معماری پنهان بقای جهان (پیش‌نویس کاری)",
+        titleEn = "Ethics: The Hidden Architecture of Survival (Draft)",
+        openingEpigraphFa = "«اخلاق، معماری پنهان بقای جهان است.»",
+        openingEpigraphEn = "\"Ethics is the hidden architecture of the world's survival.\"",
+        excerptFa = "پیش‌نویس در دست بررسی (DOC-001): هوش بدون اخلاق، تنها نسخه‌ای سریع‌تر از فروپاشی خواهد بود.",
+        excerptEn = "Working draft pending full essay integration: Intelligence without ethics accelerates collapse.",
+        closingSummaryFa = "وضعیت سند: در انتظار تلفیق با متن کامل مقاله نویسنده و تأیید نهایی پیش از انتشار صوتی.",
+        closingSummaryEn = "Status: Awaiting full author essay integration and final approval prior to audiobook release.",
+        readingMinutes = 4,
+        approvalStatus = ManuscriptApprovalStatus.DRAFT_PENDING_REVIEW,
+        sections =
+          listOf(
+            BookSection(
+              id = "ch_07_sec_1",
+              number = 1,
+              titleFa = "بند اول: گزاره‌های بنیادین نویسنده",
+              titleEn = "Section 1: Core Author Statements",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "اخلاق، معماری پنهان بقای جهان است. هوش بدون اخلاق، تنها نسخه‌ای سریع‌تر از فروپاشی خواهد بود. آفرینش بدون اخلاق، دوام نخواهد داشت.",
+                    textEn = "Ethics is the hidden architecture of the world's survival. Intelligence without ethics is only a faster version of collapse. Creation without ethics will not endure.",
+                  ),
+                ),
+            ),
+          ),
+      ),
+      Chapter(
+        id = "ch_08",
+        partId = "part_4",
+        number = 8,
+        category = ContentCategory.LIVING_ART,
+        titleFa = "فلسفه کیهانی و نظم هستی (مجموعه ناتمام)",
+        titleEn = "Cosmic Philosophy & Order (Incomplete)",
+        openingEpigraphFa = "«این مجموعه در انتظار دریافت دست‌نوشته کامل مؤلف است.»",
+        openingEpigraphEn = "\"This collection awaits the author's complete original manuscript.\"",
+        excerptFa = "موضوعات در حال تدوین (DOC-003): نظم و بی‌نظمی، پیدایش ساختارها، و پیوند حیات و آگاهی با طبیعت.",
+        excerptEn = "Incomplete themes: order and disorder, emergence of structures, and cosmic awareness.",
+        closingSummaryFa = "هشدار ویراستاری: تولید کتاب صوتی نهایی برای اسناد ناتمام مسدود است.",
+        closingSummaryEn = "Editorial lock: Final audiobook narration is blocked for incomplete collections.",
+        readingMinutes = 2,
+        approvalStatus = ManuscriptApprovalStatus.INCOMPLETE,
+        sections =
+          listOf(
+            BookSection(
+              id = "ch_08_sec_1",
+              number = 1,
+              titleFa = "وضعیت سند: ناتمام",
+              titleEn = "Status: Incomplete Source",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "متن کامل این بخش هنوز دریافت نشده است و مطابق اصول امانت‌داری ویراستاری، بدون متن اصلی مؤلف برای کتاب صوتی نهایی تولید نمی‌شود.",
+                    textEn = "Complete source text has not been received yet; final audiobook generation is locked until the author supplies and approves the manuscript.",
                   ),
                 ),
             ),

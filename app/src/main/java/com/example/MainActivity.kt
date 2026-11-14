@@ -30,6 +30,8 @@ import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.outlined.AutoAwesome
 import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material.icons.outlined.GraphicEq
+import androidx.compose.material.icons.outlined.Headphones
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Tune
@@ -75,10 +77,12 @@ import com.example.data.BookCatalog
 import com.example.model.AppLanguage
 import com.example.model.ContentCategory
 import com.example.ui.HonarZistanViewModel
+import com.example.ui.screens.AudiobookListenerScreen
 import com.example.ui.screens.BookContentsScreen
 import com.example.ui.screens.ChaptersScreen
 import com.example.ui.screens.HomeScreen
 import com.example.ui.screens.LibraryScreen
+import com.example.ui.screens.NarrationStudioScreen
 import com.example.ui.screens.PoetryScreen
 import com.example.ui.screens.QuranicScreen
 import com.example.ui.screens.ReaderScreen
@@ -94,6 +98,8 @@ sealed class AppRoute(val route: String) {
   data object Poetry : AppRoute("poetry")
   data object Quranic : AppRoute("quranic")
   data object Health : AppRoute("health")
+  data object Audiobook : AppRoute("audiobook")
+  data object NarrationStudio : AppRoute("narration_studio")
   data object Library : AppRoute("library")
   data object Search : AppRoute("search")
   data object SettingsAuthor : AppRoute("settings_author")
@@ -149,6 +155,20 @@ private val MainNavigationItems =
       "Health and wellbeing",
       Icons.Outlined.FavoriteBorder,
       "menu_health",
+    ),
+    MenuDestination(
+      AppRoute.Audiobook.route,
+      "کتاب صوتی",
+      "Audiobook",
+      Icons.Outlined.Headphones,
+      "menu_audiobook",
+    ),
+    MenuDestination(
+      AppRoute.NarrationStudio.route,
+      "استودیوی گویندگی",
+      "Narration Studio",
+      Icons.Outlined.GraphicEq,
+      "menu_narration_studio",
     ),
     MenuDestination(
       AppRoute.Library.route,
@@ -421,6 +441,45 @@ fun HonarZistanApp(viewModel: HonarZistanViewModel = viewModel()) {
                 QuranicScreen(
                   uiState = uiState,
                   onOpenChapter = { id -> openChapterReader(id, 0) },
+                )
+              }
+
+              composable(AppRoute.Audiobook.route) {
+                AudiobookListenerScreen(
+                  uiState = uiState,
+                  onSelectChapter = viewModel::selectListenerChapter,
+                  onTogglePlayPause = viewModel::playOrToggleSegment,
+                  onPlayFromPosition = viewModel::playSegmentFromPosition,
+                  onSeekTo = viewModel::seekAudiobookTo,
+                  onSeekBy = viewModel::seekAudiobookBy,
+                  onSpeedChange = viewModel::setAudiobookSpeed,
+                  onVolumeChange = viewModel::setAudiobookVolume,
+                  onAddBookmark = viewModel::addBookmarkAtCurrentPosition,
+                  onDeleteBookmark = viewModel::deleteAudioBookmark,
+                  onOpenStudioForChapter = { chId ->
+                    viewModel.selectStudioChapter(chId)
+                    navigateMenuRoute(AppRoute.NarrationStudio.route)
+                  },
+                )
+              }
+
+              composable(AppRoute.NarrationStudio.route) {
+                NarrationStudioScreen(
+                  uiState = uiState,
+                  onSelectChapter = viewModel::selectStudioChapter,
+                  onPrepareScript = viewModel::prepareChapterScript,
+                  onUpdateNarratorSelection = viewModel::updateNarratorSelection,
+                  onSelectExportFormat = viewModel::selectExportFormat,
+                  onUpdateSegmentScript = viewModel::updateSegmentScript,
+                  onGenerateWithDeviceTts = viewModel::generateSegmentWithDeviceAi,
+                  onStartRecording = viewModel::startRecordingSegment,
+                  onStopRecording = viewModel::stopRecordingSegment,
+                  onImportAudioForSegment = viewModel::importAudioForSegment,
+                  onTogglePlaySegment = viewModel::playOrToggleSegment,
+                  onToggleQualityCheckBit = viewModel::toggleQualityCheckBit,
+                  onApproveChapterAudio = viewModel::approveChapterAudio,
+                  onExportPackageToTreeUri = viewModel::exportAudiobookPackage,
+                  onClearFeedback = viewModel::clearStudioFeedback,
                 )
               }
 

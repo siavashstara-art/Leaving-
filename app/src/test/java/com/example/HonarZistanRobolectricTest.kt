@@ -133,4 +133,63 @@ class HonarZistanRobolectricTest {
     composeTestRule.waitForIdle()
     composeTestRule.onNodeWithText("Siavash Ali-Miri").assertIsDisplayed()
   }
+
+  @Test
+  fun audiobookListener_and_narrationStudio_work() {
+    composeTestRule.waitForIdle()
+
+    // Open Audiobook Listener via menu
+    composeTestRule.onNodeWithTag("open_main_menu_btn").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("menu_audiobook").performScrollTo().performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("audiobook_listener_screen").assertIsDisplayed()
+    composeTestRule
+      .onNodeWithTag("audiobook_listener_list")
+      .performScrollToNode(hasTestTag("listener_play_pause_btn"))
+    composeTestRule.onNodeWithTag("listener_play_pause_btn").assertIsNotEnabled()
+
+    // Scroll back to header and open Narration Studio from Listener button
+    composeTestRule.onNodeWithTag("audiobook_listener_list").performScrollToIndex(0)
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("open_studio_from_listener_btn").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule.onNodeWithTag("narration_studio_screen").assertIsDisplayed()
+
+    // Scroll to script preparation for approved ch_01 and verify segments render
+    composeTestRule
+      .onNodeWithTag("narration_studio_list")
+      .performScrollToNode(hasTestTag("prepare_script_btn"))
+    composeTestRule.onNodeWithTag("prepare_script_btn").performClick()
+    composeTestRule.waitUntil(timeoutMillis = 5000) {
+      composeTestRule
+        .onAllNodesWithTag("studio_segment_ch_01_seg_0")
+        .fetchSemanticsNodes()
+        .isNotEmpty() ||
+        runCatching {
+            composeTestRule
+              .onNodeWithTag("narration_studio_list")
+              .performScrollToNode(hasTestTag("studio_segment_ch_01_seg_0"))
+          }
+          .isSuccess
+    }
+    composeTestRule
+      .onNodeWithTag("narration_studio_list")
+      .performScrollToNode(hasTestTag("studio_segment_ch_01_seg_0"))
+    composeTestRule.onNodeWithTag("studio_segment_ch_01_seg_0").assertIsDisplayed()
+
+    // Select unapproved draft ch_07 and verify Editorial Lock Banner appears
+    composeTestRule
+      .onNodeWithTag("narration_studio_list")
+      .performScrollToNode(hasTestTag("studio_chapter_row"))
+    composeTestRule
+      .onNodeWithTag("studio_chapter_row")
+      .performScrollToNode(hasTestTag("studio_chapter_chip_ch_07"))
+    composeTestRule.onNodeWithTag("studio_chapter_chip_ch_07").performClick()
+    composeTestRule.waitForIdle()
+    composeTestRule
+      .onNodeWithTag("narration_studio_list")
+      .performScrollToNode(hasTestTag("unapproved_chapter_lock_banner"))
+    composeTestRule.onNodeWithTag("unapproved_chapter_lock_banner").assertIsDisplayed()
+  }
 }

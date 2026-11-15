@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هنر زیستن | The Living Book of Life</title>
+    <link rel="manifest" href="data:application/json;charset=utf-8,{
+      %22name%22: %22Honar Zistan — The Living Book of Life%22,
+      %22short_name%22: %22Honar Zistan%22,
+      %22start_url%22: %22/%22,
+      %22display%22: %22standalone%22,
+      %22background_color%22: %22%23FAF6EE%22,
+      %22theme_color%22: %22%231B4D3E%22
+    }">
+    <style>
+        :root {
+            --bg-color: #FAF6EE;
+            --surface-color: #FFFDF9;
+            --surface-soft: #F3ECE0;
+            --primary-color: #1B4D3E;
+            --accent-gold: #D4AF37;
+            --text-main: #242424;
+            --text-muted: #5F6B66;
+            --border-color: #E2D9C5;
+            --font-family: 'Vazirmatn', Tahoma, sans-serif;
+        }
+        [data-theme="dark"] {
+            --bg-color: #111816;
+            --surface-color: #1B2621;
+            --surface-soft: #23302A;
+            --primary-color: #9FD0B9;
+            --accent-gold: #E5C158;
+            --text-main: #EAE4D7;
+            --text-muted: #A7B3AD;
+            --border-color: #2E3D35;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-family); }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.9; transition: background 0.3s, color 0.3s; }
+        header {
+            background-color: var(--surface-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 1rem;
+        }
+        .brand-wrap { display: flex; flex-direction: column; }
+        .brand { font-size: 1.2rem; font-weight: 700; color: var(--primary-color); }
+        .brand-sub { font-size: 0.78rem; color: var(--text-muted); }
+        .controls { display: flex; gap: 0.6rem; align-items: center; }
+        select, button, .btn-link {
+            padding: 0.48rem 0.85rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--surface-color);
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        button:hover, .btn-link:hover { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        main { max-width: 880px; margin: 1.75rem auto; padding: 0 1.25rem; }
+        nav.tabs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.9rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        nav.tabs button { white-space: nowrap; font-weight: 500; }
+        nav.tabs button.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); }
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1.65rem;
+            margin-bottom: 1.35rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.035);
+            scroll-margin-top: 84px;
+        }
+        .card-accent { border-top: 3px solid var(--accent-gold); }
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 0.76rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+        .btn-mini {
+            font-size: 0.76rem;
+            padding: 0.24rem 0.6rem;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            color: var(--text-muted);
+        }
+        h1, h2, h3 { color: var(--primary-color); margin-bottom: 0.75rem; line-height: 1.45; }
+        p { margin-bottom: 0.95rem; white-space: pre-line; }
+        .quote-wrap {
+            position: relative;
+            border-right: 4px solid var(--accent-gold);
+            padding: 0.75rem 1rem;
+            background: var(--surface-soft);
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        [dir="ltr"] .quote-wrap {
+            border-right: none;
+            border-left: 4px solid var(--accent-gold);
+        }
+        .quote-text {
+            font-style: italic;
+            color: var(--primary-color);
+            margin-bottom: 0.45rem;
+            white-space: pre-line;
+        }
+        .quote-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .reflection-box {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            border-radius: 10px;
+            background: var(--bg-color);
+            border: 1px dashed var(--accent-gold);
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        .reflection-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+        .divider { border: 0; border-top: 1px solid var(--border-color); margin: 1.25rem 0; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.35rem; font-weight: 500; font-size: 0.9rem; }
+        input, textarea, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-color);
+            color: var(--text-main);
+        }
+        .checkbox-group { display: flex; flex-direction: column; gap: 0.55rem; margin: 1rem 0; }
+        .checkbox-row { display: flex; align-items: center; gap: 0.5rem; }
+        .checkbox-row input { width: auto; }
+        .checkbox-row label { margin: 0; font-weight: 400; }
+        .btn-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.6rem; }
+        .btn-primary { background: var(--primary-color); color: #fff; border-color: var(--primary-color); font-weight: 600; }
+        .btn-gold { background: var(--surface-soft); color: var(--primary-color); border-color: var(--accent-gold); font-weight: 600; }
+        .story-item { padding: 1rem; border-radius: 10px; background: var(--surface-soft); border: 1px solid var(--border-color); margin-top: 0.75rem; }
+        .notice-box {
+            padding: 0.85rem 1rem;
+            border-radius: 10px;
+            background: var(--surface-soft);
+            border: 1px solid var(--border-color);
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        #toast {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.6rem 1.15rem;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s, transform 0.25s;
+            z-index: 999;
+        }
+        #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        footer {
+            text-align: center;
+            padding: 2rem 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2.5rem;
+        }
+    </style>
+</head>
+<body data-theme="light" dir="rtl">
+
+    <header>
+        <div class="brand-wrap">
+            <div class="brand" id="brand-title">هنر زیستن | کتاب مصور زندگی</div>
+            <div class="brand-sub" id="brand-subtitle">کتاب زنده زندگی — سیاوش علی‌میری</div>
+        </div>
+        <div class="controls">
+            <select id="lang-select" onchange="changeLanguage(this.value)" aria-label="Language">
+                <option value="fa">فارسی</option>
+                <option value="ar">العربیة</option>
+                <option value="en">English</option>
+            </select>
+            <button onclick="toggleTheme()" aria-label="Toggle Theme">🌓</button>
+        </div>
+    </header>
+
+    <main>
+        <nav class="tabs" id="main-tabs">
+            <button class="active" data-tab="home" onclick="switchTab('home')">خانه</button>
+            <button data-tab="journey" onclick="switchTab('journey')">داستان واقعی مؤلف</button>
+            <button data-tab="chapters" onclick="switchTab('chapters')">فصل‌های یکپارچه</button>
+            <button data-tab="experiences" onclick="switchTab('experiences')">تجربه‌های زیسته شما</button>
+            <button data-tab="colophon" onclick="switchTab('colophon')">شناسنامه و حقوق اثر</button>
+        </nav>
+
+        <div id="content-area"></div>
+    </main>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+    <footer id="footer-area"></footer>
+
+    <script>
+        const AUTHOR_EMAIL = 'siavashstara@gmail.com';
+        let currentLang = 'fa';
+        let currentTheme = 'light';
+        let activeTab = 'home';
+        let pendingPromptTitle = '';
+
+        const contentData = {
+            fa: {
+                brand: "هنر زیستن | کتاب مصور زندگی",
+                brandSub: "کتاب زنده زندگی — اثری که با انسان‌ها رشد می‌کند",
+                tabs: ["خانه", "داستان واقعی مؤلف", "فصل‌های یکپارچه", "تجربه‌های زیسته شما", "شناسنامه و حقوق اثر"],
+                ui: {
+                    copyQuote: "کپی جمله",
+                    copiedQuote: "جمله با نام مؤلف کپی شد",
+                    copyLink: "لینک فصل",
+                    copiedLink: "لینک مستقیم فصل کپی شد",
+                    reflectionLabel: "پرسش تأمل این فصل:",
+                    reflectBtn: "ثبت تجربه یا پاسخ به این پرسش",
+                    attrSuffix: "سیاوش علی‌میری — کتاب هنر زیستن"
+                },
+                home: {
+                    badge: "هویت و فلسفه‌ی اثر",
+                    title: "سفری برای شناخت خویشتن، فهم جهان و آموختن هنر بهتر زیستن",
+                    identityQuote: "«من این کتاب را از جایگاه انسانی نمی‌نویسم که همه‌ی پاسخ‌های زندگی را پیدا کرده است؛ از جایگاه انسانی می‌نویسم که زندگی را در دو سوی برخورداری و فقدان تجربه کرده، زمین خورده، دوباره به جست‌وجو برخاسته و هنوز در حال آموختن و ساختن است.»",
+                    principle: "«من نیامده‌ام به شما درس زندگی بدهم؛ آمده‌ام تجربه‌های زندگی‌ام را با شما قسمت کنم. هدف این اثر تولید انبوه کلمات نیست؛ ده صفحه عمیق و اثرگذار از صدها صفحه بی‌ثمر ارزشمندتر است.»",
+                    philosophy: "هنر زیستن قرار نیست به انسان دیکته کند چگونه زندگی کند؛ قرار است به او کمک کند خودش را بهتر بشناسد، آگاهانه‌تر انتخاب کند و مسیر زندگی معنادار خود را پیدا کند."
+                },
+                journey: {
+                    badge: "ریشه‌ی انسانی و صادقانه کتاب (DOC-009, DOC-011 & DOC-012)",
+                    title: "از بازار عباس‌آباد و سفر شمال تا صرفِ فعل «خواستن» و عهد گیت‌هاب",
+                    sections: [
+                        {
+                            heading: "سفر شمال، بیماری مادر و دو سال پرستاری عاشقانه",
+                            body: "در حدود سی‌سالگی، زندگی در رفاه، آسایش و ثبات مالی می‌گذشت. سال‌ها پیش‌تر، مادرم خوابی را برایم تعریف کرده بود: دیده بود دو فرشته به خانه‌مان آمده‌اند و برای فرزند کوچک‌ترش برکت آورده‌اند تا روزی کاری مهم در جهان انجام دهد.\n\nچند سال پیش، مادرم، پدرم و یکی از برادرانم به شمال رفته بودند. سر ظهر که زنگ زدم کسی پاسخ نداد؛ لحظه‌ای خوابم برد و با کابوسی پریدم و ناخودآگاه رو به آسمان گفتم: «خدایا، خوشی و خوشبختی من تا همین‌جا بود؟ از این به بعد دنیای من ویران شد؟» عصر همان روز بدون مادرم برگشتند؛ او زمین خورده، استخوان لگنش شکسته و پس از یک ساعت درد شدید به اتاق عمل رفته بود. فردای آن روز کنار تخت جراحی دانستیم شکستگی ساده نبوده و تومور متاستاز سرطان ریه با سلول کوچک به استخوان لگن فشار آورده و دیر تشخیص داده شده است.\n\nاما خدا را شکر خانواده چنان عاشقانه و با روحیه‌ی نشاط از او پرستاری کردند که مادرم نزدیک به دو سال در کنارمان ماند و توانستیم از بودنش لذت ببریم. پس از درگذشتش، من که فرزند آخر خانه بودم هر روز فرومی‌ریختم و صبح‌ها ناخودآگاه در خانه دنبالش می‌گشتم. ادعا نمی‌کنم خواب مادرم رویدادی علمی یا فراطبیعی است؛ ارزش آن در عشق مادرانه‌ای است که امید را در تاریک‌ترین شب‌هایم زنده نگه داشت."
+                        },
+                        {
+                            heading: "سیرهٔ پدر در بازار عباس‌آباد، فلسفهٔ اعتبار و فقدان ناگهانی",
+                            body: "پدر مرحومم حاج حسین‌آقای علی‌میری از کودکی در بازار عباس‌آباد تهران در مغازه‌ی یک تاجر بزرگ و سرشناس شاگرد بود. پس از سال‌ها شاگردی، در ۳۰ سالگی تاجر شد؛ نخستین محموله‌ی فرش ایرانی را به آلمان فرستاد و تجارتش را به اروپا و حتی آمریکا و کانادا گسترش داد. او بسیار خیررسان و مردمی بود و به ما می‌گفت: «انسان با مردم است که بزرگ می‌شود؛ هیچ انسانی با دادوستد با خودش ثروتمند نشده است. ثروت یک انسان پیش از دارایی‌هایش، اعتبار او در میان مردم است؛ اگر روزی ثروتش از بین برود باز هم به دست می‌آید، اما ثروتمندی که اعتبارش را از دست بدهد همه‌چیزش را از دست داده است.»\n\nهنوز نیامده بودم سرم را روی شانه‌ی پدرم بگذارم که او هم به‌یک‌باره از دنیا رفت و کمرم شکست. بدبیاری و شکست‌های پیاپی آمد تا کشتی زندگی‌ام به گل نشست. در میانه‌ی آتش و خاکستر، یاد خواب مادر افتادم و چهره مهربان پدر جلوی چشمانم زنده شد؛ عهد کردم بلند شوم تا روبه‌روی پدر و مادرم روسفید باشم، و به یاد پدر ساختن «فرش بازار» را آغاز کردم."
+                        },
+                        {
+                            heading: "گوشی میان‌رده، فعل «خواستن» و عهدِ نخستین مخزن گیت‌هاب",
+                            body: "بدون هیچ تحصیلات آکادمیک و پیشینه‌ی قبلی وارد طراحی اپلیکیشن شدم؛ آن هم در حالی که تا چند سال پیش‌تر حتی موبایل هوشمند دوست نداشتم—بدون کامپیوتر و فقط با یک موبایل اندروید میان‌رده! به جای فریاد بر جهان، لحظه‌ای سکوت کردم و با همه‌ی توان فعل «خواستن» را صرف کردم و شب‌هایی با چشمان اشک‌بار کد می‌نوشتم.\n\nوقتی وارد گیت‌هاب (GitHub) شدم و نخستین ریپازیتوری خودم را ساختم، با خود عهد کردم اپلیکیشن‌هایی طراحی کنم که هر کس از اقصی‌نقاط دنیا پیش بیاید، به اندازه تلاش و ایثار و باورش بهره‌مند شود و سفره‌ای از برکت الهی برای همگان پهن شود—الهی آمین. Firebase و هوش مصنوعی همراهانی عملی در این مسیر بودند و شهر مجازی FB NewMeta و چشم‌انداز «توانا» (TAVANA) از همین ریشه زاده شدند."
+                        }
+                    ]
+                },
+                chaptersTitle: "فصل‌های یکپارچه‌ی کتاب",
+                chapters: [
+                    {
+                        id: "ch-01",
+                        tag: "فصل ۱ — سرآغاز هم‌مسیر",
+                        title: "سرآغاز هم‌مسیر؛ از شناخت جهان تا آیینه‌ی لحظه‌ی اکنون",
+                        quote: "«زیستن، تنها عبور از روزها نیست؛ هنرِ شناختن، آموختن و معنا بخشیدن به لحظه‌هایی است که در اختیار ماست.»",
+                        text: "شناخت جهان به‌تنهایی کافی نیست؛ ما باید خودمان را هم بشناسیم. آرامش درونی یعنی بتوانیم میان یک اتفاق و واکنشی که نشان می‌دهیم لحظه‌ای مکث کنیم، بدون سرزنش به درونمان بنگریم و آگاهانه‌تر انتخاب کنیم.",
+                        reflection: "در زندگی روزمره، کدام لحظه بیش از همه نیازمند یک مکث آگاهانه پیش از واکنش بوده است؟"
+                    },
+                    {
+                        id: "ch-02",
+                        tag: "فصل ۲ — DOC-005 & DOC-010",
+                        title: "قدرت یک کلمه و سخن صادقانه‌ای که بیدار کند",
+                        quote: "«انسان با یک کلمه گاه متحول می‌شود و جهان را تکان می‌دهد؛ اما یک جهان گاهی تکان می‌خورد و نمی‌تواند یک انسان را ذره‌ای تکان دهد.»",
+                        text: "ارزش سخن به تعداد کلمات آن نیست؛ به عمق معنا و تأثیری است که در رفتار و اندیشه انسان ایجاد می‌کند.\n\n«سخنِ صادقانه‌ای که مرا ناراحت کند و از خواب بیدار کند، بهتر از سخن دروغی است که مرا بخواباند و به من آرامش دهد؛ سخنِ صادقانه‌ای که مرا ناراحت کند، بهتر از آن سخن دروغی است که مرا خوشحال کند.»",
+                        reflection: "چه جمله یا حقیقتِ صادقانه‌ای—هرچند تلخ—مسیر نگاه شما را به زندگی بیدار کرد؟"
+                    },
+                    {
+                        id: "ch-03",
+                        tag: "فصل ۳ — DOC-009 & DOC-011",
+                        title: "خوابی که در خاطرم ماند؛ مادر، رنج و باغ بیداری",
+                        quote: "«ارزش آن خواب در عشق مادرانه‌ای بود که در تاریک‌ترین شب‌های زندگی‌ام، امید را در دلم زنده نگه داشت.»",
+                        text: "روایت سفر شمال، بیماری دیرآشکار‌شدهٔ مادر، دو سال همدلی و پرستاری عاشقانه خانواده، و صبح‌های خالیِ فرزند آخر پس از فقدان او؛ جایی که اندوه واقعی به خاکِ پربرکت شعر و معنا راه می‌برد.",
+                        reflection: "کدام یاد یا جمله از عزیزان شما در سخت‌ترین روزها چراغ امیدتان را روشن نگه داشته است؟"
+                    },
+                    {
+                        id: "ch-04",
+                        tag: "فصل ۴ — پناه دل و یاد",
+                        title: "پناه دل در تلاطمِ فقدان؛ آرامش یاد و امید به گشایش",
+                        quote: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ۝ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+                        text: "اطمینان به معنای نبودن دشواری نیست؛ بلکه یافتن لنگرگاهی استوار در میانه‌ی طوفان فقدان. هر تنگنا و سختی، همراه با خود بذر گشایش را حمل می‌کند.",
+                        reflection: "در زمان تلاطم و فقدان، چه تکیه‌گاه درونی یا معنوی به دل شما آرامش داده است؟"
+                    },
+                    {
+                        id: "ch-05",
+                        tag: "فصل ۵ — DOC-006",
+                        title: "قدرتی که در سکوت نهفته است و آیین صبح مهربان",
+                        quote: "«قدرتی که فریاد نمی‌زند، گاهی عمیق‌ترین و ماندگارترین قدرت انسان است.»",
+                        text: "بزرگ‌ترین پیروزی انسان گاه پیروزی بر خشم خویش است. تفاوتی ژرف میان سکوت از سرِ ترس و سکوتی که از خرد، آگاهی و اجازه ندادن به دیگران برای تسلط بر آرامش درون می‌آید وجود دارد.",
+                        reflection: "کجا سکوتِ آگاهانه توانسته است آرامش و کرامت شما را حفظ کند؟"
+                    },
+                    {
+                        id: "ch-07",
+                        tag: "فصل ۷ — DOC-001, DOC-011 & DOC-012",
+                        title: "از بازار عباس‌آباد تا عهد گیت‌هاب؛ عزت پدر، گوشی میان‌رده و اخلاق بقا",
+                        quote: "«انسان با مردم است که بزرگ می‌شود؛ ثروت یک انسان پیش از دارایی‌هایش اعتبار او در میان مردم است.» — حاج حسین‌آقای علی‌میری",
+                        text: "سیرهٔ پدر از شاگردی بازار عباس‌آباد تا صادرات فرش به آلمان، اروپا، آمریکا و کانادا؛ برخاستن از کشتی به گل‌نشسته با یک گوشی اندروید میان‌رده، ساختن اولین ریپازیتوری گیت‌هاب با عهد گستردن سفره برای همه، و پیوند آن با اخلاق بقای جهان و آفرینش (FB NewMeta & TAVANA).",
+                        reflection: "در کار و آفرینش شما، حفظ «اعتبار میان مردم» چگونه از ثروت ظاهری ارزشمندتر بوده است؟"
+                    },
+                    {
+                        id: "ch-09",
+                        tag: "فصل ۹ (مؤخره) — DOC-008",
+                        title: "این راه با شما ادامه پیدا می‌کند",
+                        quote: "«این صفحات به پایان می‌رسند؛ اما داستان زندگی انسان‌ها همچنان ادامه دارد.»",
+                        text: "هیچ‌کس مالک تمام حقیقت زندگی نیست. دوست داریم «هنر زیستن» در این صفحه‌ها متوقف نشود و با حضور و روایت‌های واقعی انسان‌ها—با رضایت کامل هر صاحب اثر—زنده و پویا بماند.",
+                        reflection: "اگر بخواهید یک تجربه‌ی واقعی زندگی‌تان را برای خواننده‌ی دیگری بنویسید، آن تجربه چیست؟"
+                    }
+                ],
+                expTitle: "تجربه‌های زیسته شما (کتاب زنده)",
+                expSubtitle: "داستان زندگی یا تجربه‌ی شکست و دوباره برخاستنت را بنویس؛ می‌توانی آن را روی دستگاه ذخیره کنی یا مستقیماً برای جیمیل مؤلف ارسال کنی.",
+                expNotice: "این نسخه برای ارسال مستقیم ایمیل به نشانی siavashstara@gmail.com متصل است و همچنین رونوشت را در حافظه‌ی دستگاه شما نگه می‌دارد.",
+                form: {
+                    name: "نام یا نام مستعار (اختیاری):",
+                    title: "عنوان تجربه:",
+                    category: "دسته‌بندی:",
+                    categories: ["فراز و نشیب و دوباره برخاستن", "آرامش روان و خودشناسی", "قدرت سکوت و انتخاب آگاهانه", "سلامت جسم و سبک زندگی"],
+                    text: "روایت کامل تجربه:",
+                    consentBook: "اجازه انتشار در کتاب «هنر زیستن» (پس از بررسی ویراستاری)",
+                    consentApp: "اجازه نمایش در وب‌اپلیکیشن و اپلیکیشن",
+                    submitLocal: "ذخیره در دستگاه",
+                    submitEmail: "ارسال مستقیم با جیمیل / ایمیل به مؤلف",
+                    copyEmailText: "کپی متن برای ایمیل",
+                    successMsg: "تجربه شما در حافظه محلی ذخیره شد.",
+                    copiedEmailMsg: "متن آماده ایمیل کپی شد؛ می‌توانید به siavashstara@gmail.com بفرستید.",
+                    fillRequiredMsg: "لطفاً عنوان و متن تجربه را وارد کنید.",
+                    savedTitle: "تجربه‌های ثبت‌شده در دستگاه شما:"
+                },
+                colophon: {
+                    title: "شناسنامه، حقوق مادی و معنوی و کارنامه مؤلف",
+                    owner: "کلیه حقوق مادی و معنوی این اثر متعلق است به آقای اکبر علی‌میری (سیاوش)، توسعه‌دهنده.",
+                    father: "به یاد پدر مرحوم حاج حسین‌آقای علی‌میری، تاجر بزرگ فرش ایران و جهان.",
+                    emailLabel: "ارتباط مستقیم با مؤلف:",
+                    portfolio: "سایر آثار و محصولات از همین توسعه‌دهنده (سیاوش):",
+                    items: "فرش بازار ایران و جهان، لینک‌لینکوی (LinkLinko)، آموزش زبان فارسی به انگلیسی‌زبانان، نسل سوم بچه‌های ایرانی خارج از کشور، ایبل‌سیتی فریلنسر و اجوکیشن، توانا مسترها / فورک / اگنت، اکوسیستم آفرینش (آفرینا)، شهر جدید نیومتا (FB NewMeta / متاورس جهان)، ساختمان‌یار، سالن‌یار، کلینیک‌یار، تالار‌یار، دکورمیت، کمدی پایلت، شطرنج هم‌جهان، هوش مصنوعی نکسوس، تی‌دیپلوی، طلایار، روزگارد، اپلیکیشن اختصاصی بدنسازی برای همه رشته‌ها، و کتاب جامع بزرگ بدنسازی (دیجیتال)."
+                },
+                footer: "© کلیه حقوق مادی و معنوی متعلق است به آقای اکبر علی‌میری (سیاوش) | به یاد پدر مرحوم حاج حسین‌آقای علی‌میری"
+            },
+            ar: {
+                brand: "فن العيش | الكتاب المصور للحياة",
+                brandSub: "الكتاب الحي للحياة — ينمو مع التجربة الإنسانية",
+                tabs: ["الرئيسية", "القصة الحقيقية للمؤلف", "الفصول المترابطة", "تجاربكم المعاشة", "حقوق المؤلف"],
+                ui: {
+                    copyQuote: "نسخ الاقتباس",
+                    copiedQuote: "تم نسخ الاقتباس مع اسم المؤلف",
+                    copyLink: "رابط الفصل",
+                    copiedLink: "تم نسخ رابط الفصل",
+                    reflectionLabel: "سؤال التأمل لهذا الفصل:",
+                    reflectBtn: "شارك تجربتك أو إجابتك",
+                    attrSuffix: "سياوش علي‌ميري — كتاب فن العيش"
+                },
+                home: {
+                    badge: "هوية العمل وفلسفته",
+                    title: "رحلة لمعرفة الذات وفهم العالم وتعلم فن العيش الواعي",
+                    identityQuote: "«لا أكتب هذا الكتاب من مقام إنسان وجد كل أجوبة الحياة؛ بل من مقام إنسان اختبر الحياة على ضفتي اليسر والفقد، سقط ثم نهض للبحث من جديد، وما زال يتعلم ويبني.»",
+                    principle: "«لم آتِ لألقي عليكم دروساً في الحياة، بل جئت لأشارككم تجاربي. ليس الهدف كثرة الكلمات، فعشر صفحات عميقة أبقى من مئات الصفحات الجوفاء.»",
+                    philosophy: "ليس المقصود من فن العيش أن يملي على الإنسان كيف يعيش، بل أن يساعده على فهم ذاته واختيار طريقه بوعي ومعنى."
+                },
+                journey: {
+                    badge: "الجذر الإنساني الصادق (DOC-009, DOC-011 & DOC-012)",
+                    title: "من سوق عباس‌آباد ورحلة الشمال إلى عهد GitHub بهاتف متوسط",
+                    sections: [
+                        {
+                            heading: "رحلة الشمال، مرض الأم، وسنتان من الرعاية المحبة",
+                            body: "قرابة الثلاثين من عمري كنت أنعم بالاستقرار المالي. وقبل ذلك بسنوات روت لي والدتي رؤيا عن ملاكين حملا بركةً لابنها الأصغر. لاحقاً سافرت والدتي ووالدي وأحد إخوتي إلى الشمال. وعند الظهر اتصلت فلم يُجب أحد؛ غفوت لحظة فرأيت كابوساً وقلت نحو السماء: «إلهي، هل انتهت سعادتي عند هذا الحد؟» وفي المساء عادوا بدونها بعد سقوطها وكسر عظم الحوض، ليتبين لاحقاً وجود ورم ثانوي من سرطان الرئة ضغط على الحوض.\n\nلكن بفضل محبة العائلة ورعايتها المبهجة بقيت أمي قرابة عامين معنا. وبعد رحيلها، وبوصفي الابن الأصغر، كنت أبحث عنها كل صباح في البيت. لا أدّعي للرؤيا دليلاً علمياً؛ قيمتها في محبة أمي التي أبقت الأمل حياً في أحلك لياليّ."
+                        },
+                        {
+                            heading: "سيرة الأب من سوق عباس‌آباد وفلسفة الثقة والسمعة",
+                            body: "بدأ والدي المرحوم الحاج حسين آقا علي‌ميري منذ طفولته تلميذاً في متجر تاجرٍ كبير بسوق عباس‌آباد في طهران، ثم صار تاجراً في الثلاثين من عمره فأرسل أول شحنة سجاد إيراني إلى ألمانيا ووسّع صادراته إلى أوروبا وأمريكا وكندا. وكان خيّراً محبوباً يقول لنا: «إن الإنسان يكبر بالناس؛ وثروة الإنسان قبل أمواله هي ثقته ومكانته بين الناس؛ فالمال إن ضاع يعود بالثقة، ومن فقد ثقة الناس فقد كل شيء».\n\nوقبل أن أضع رأسي على كتف أبي مكان أمي، رحل فجأة فانكسر ظهري وجنحت سفينة حياتي؛ فتذكرت رؤيا أمي ووجه أبي الكريم وبدأت ببناء «سوق السجاد» إحياءً لذكراه."
+                        },
+                        {
+                            heading: "هاتف متوسط، فعل «الإرادة» وعهد أول مستودع في GitHub",
+                            body: "دخلت تصميم التطبيقات بلا شهادة وبلا حاسوب—بهاتف أندرويد متوسط فقط، رغم أنني لم أكن أحب الهواتف الذكية. صرّفت فعل «الإرادة» بصمت وعزيمة، وحين أنشأت أول مستودع لي على GitHub عاهدت نفسي أن أصمم تطبيقات ينتفع منها كل إنسان في أقصى بقاع الأرض بقدر سعيه وبذله، داعياً أن تُمدّ مائدة بركة يجلس إليها الجميع، امتداداً نحو FB NewMeta ورؤية TAVANA."
+                        }
+                    ]
+                },
+                chaptersTitle: "الفصول الموحّدة للكتاب",
+                chapters: [
+                    {
+                        id: "ch-01",
+                        tag: "الفصل ١ — استهلال الرفيق",
+                        title: "استهلال الرفيق: من فهم العالم إلى مرآة اللحظة",
+                        quote: "«العيش ليس مجرد عبور الأيام، بل فن الفهم وإضفاء المعنى على اللحظات.»",
+                        text: "لا يكفي فهم العالم دون معرفة أنفسنا. تبدأ السكينة عندما نصنع وقفة هادئة بين الحدث وردة فعلنا، ونراجع عاداتنا بوعي.",
+                        reflection: "ما اللحظة التي تمنيت لو منحتها وقفة صمت ووعي قبل أن ترد؟"
+                    },
+                    {
+                        id: "ch-02",
+                        tag: "الفصل ٢ — DOC-005 & DOC-010",
+                        title: "قوة كلمة واحدة والكلمة الصادقة التي توقظ",
+                        quote: "«قد يتحول الإنسان بكلمة واحدة فيهز العالم، بينما يهتز العالم أحياناً ولا يحرك إنساناً قيد أنملة.»",
+                        text: "قيمة القول في عمق أثره لا في عدد كلماته.\n\n«إن الكلمة الصادقة التي تؤلمني وتوقظني من نومي خيرٌ من الكلمة الكاذبة التي تنوّمني وتمنحني راحةً وهمية؛ والكلمة الصادقة التي تحزنني خيرٌ من الكذبة التي تفرحني.»",
+                        reflection: "أي حقيقة صادقة أيقظتك وغيرت نظرتك إلى الحياة؟"
+                    },
+                    {
+                        id: "ch-03",
+                        tag: "الفصل ٣ — DOC-009 & DOC-011",
+                        title: "رؤيا بقيت في ذاكرتي؛ الأم والألم وحديقة الصحوة",
+                        quote: "«قيمة تلك الرؤيا تكمن في محبة الأم وأملها الذي أضاء لي أصعب الليالي.»",
+                        text: "ذكرى رحلة الشمال، سنتان من رعاية العائلة، وحزن الابن الأصغر الذي يلتقي بصبر الشعر ومعنى الحياة.",
+                        reflection: "أي ذكرى أو دعوة من أحبائك ما زالت تمنحك الثبات في الشدائد؟"
+                    },
+                    {
+                        id: "ch-04",
+                        tag: "الفصل ٤ — ملاذ القلب في الفقد",
+                        title: "ملاذ القلب في العاصفة: طمأنينة الذكر والأمل بالفرج",
+                        quote: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ۝ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا",
+                        text: "ليست الطمأنينة غياب الفقد والألم، بل إيجاد مرساة راسخة وسط الأمواج؛ فمع كل عسر يسكن بذر اليسر.",
+                        reflection: "كيف تستعيد سكينة قلبك عندما تشتد العواصف؟"
+                    },
+                    {
+                        id: "ch-05",
+                        tag: "الفصل ٥ — DOC-006",
+                        title: "القوة الكامنة في الصمت وآداب الصباح اللطيف",
+                        quote: "«القوة التي لا تصرخ قد تكون أعمق قوى الإنسان وأبقاها.»",
+                        text: "أعظم انتصار للإنسان انتصاره على غضبه. هناك فرق شاسع بين صمت الخوف وصمت الحكمة والوعي.",
+                        reflection: "متى حفظ لك الصمت الواعي سلامك وكرامتك؟"
+                    },
+                    {
+                        id: "ch-07",
+                        tag: "الفصل ٧ — DOC-001, DOC-011 & DOC-012",
+                        title: "من سوق عباس‌آباد إلى عهد GitHub: عزة الأب، الهاتف المتوسط وأخلاق البقاء",
+                        quote: "«ثروة الإنسان قبل أمواله هي مكانته وثقته بين الناس.» — الحاج حسين آقا علي‌ميري",
+                        text: "سيرة الأب من سوق عباس‌آباد إلى تصدير السجاد لألمانيا وأوروبا وأمريكا وكندا، والنهوض بهاتف متوسط وعهد أول مستودع في GitHub في اقتران تام مع أخلاق بقاء العالم.",
+                        reflection: "كيف تصبح الثقة بين الناس والعهد الصادق أساساً أبقى من الثروة المادية؟"
+                    },
+                    {
+                        id: "ch-09",
+                        tag: "الفصل ٩ (الخاتمة) — DOC-008",
+                        title: "هذا الطريق يستمر بكم",
+                        quote: "«تنتهي هذه الصفحات، لكن حكاية الإنسان ما زالت مستمرة.»",
+                        text: "لا أحد يمتلك الحقيقة كلها؛ وبموافقة صريحة واحترام تام، تظل تجارب القراء تمنح هذا الكتاب حياةً متجددة.",
+                        reflection: "ما التجربة الصادقة التي تود مشاركتها مع قارئ آخر؟"
+                    }
+                ],
+                expTitle: "تجاربك المعاشة (الكتاب الحي)",
+                expSubtitle: "شارك قصتك في الصمود أو التعلم؛ احفظها محلياً أو أرسلها مباشرة إلى بريد المؤلف.",
+                expNotice: "يمكنك إرسال تجربتك مباشرة إلى بريد المؤلف (siavashstara@gmail.com) أو حفظها في جهازك.",
+                form: {
+                    name: "الاسم أو الاسم المستعار (اختياري):",
+                    title: "عنوان التجربة:",
+                    category: "التصنيف:",
+                    categories: ["النهوض بعد السقوط", "السكينة ومعرفة الذات", "قوة الصمت والوعي", "الصحة وتوازن الحياة"],
+                    text: "النص الكامل للتجربة:",
+                    consentBook: "أوافق على الاستخدام في كتاب فن العيش بعد المراجعة",
+                    consentApp: "أوافق على النشر في تطبيق الويب والتطبيق",
+                    submitLocal: "حفظ على الجهاز",
+                    submitEmail: "إرسال مباشر عبر Gmail / البريد للمؤلف",
+                    copyEmailText: "نسخ النص للبريد",
+                    successMsg: "تم حفظ تجربتك محلياً بنجاح.",
+                    copiedEmailMsg: "تم نسخ نص الرسالة للإرسال إلى siavashstara@gmail.com",
+                    fillRequiredMsg: "يرجى إدخال عنوان التجربة ونصها.",
+                    savedTitle: "التجارب المحفوظة على جهازك:"
+                },
+                colophon: {
+                    title: "حقوق الملكية الفكرية وأعمال المؤلف",
+                    owner: "جميع حقوق الملكية المادية والمعنوية محفوظة للسيد أكبر علي‌ميري (سياوش)، المطور.",
+                    father: "إحياءً لذكرى الوالد المرحوم الحاج حسين آقا علي‌ميري، تاجر السجاد الإيراني والعالمي.",
+                    emailLabel: "التواصل المباشر مع المؤلف:",
+                    portfolio: "أعمال ومشاريع أخرى للمطور (سياوش):",
+                    items: "سوق السجاد الإيراني والعالمي، لينكلينكو، تعليم الفارسية، الجيل الثالث من الإيرانيين في الخارج، إبل سيتي، تافانا مسترز، منظومة آفرينا، مدينة FB NewMeta، ساختمان‌يار، سالن‌يار، كلينيك‌يار، تالار‌يار، ديكورميت، كوميدي بايلوت، الشطرنج العالمي، نكسوس للذكاء الاصطناعي، تي ديبلوي، طلايار، روزغارد، وتطبيق وكتاب كمال الأجسام الشامل."
+                },
+                footer: "© جميع الحقوق محفوظة للسيد أكبر علي‌ميري (سياوش) | إحياءً لذكرى المرحوم الحاج حسين آقا علي‌ميري"
+            },
+            en: {
+                brand: "Honar Zistan — The Living Book of Life",
+                brandSub: "A Book That Grows With Humanity — by Siavash Ali-Miri",
+                tabs: ["Home", "The Author's Story", "Unified Chapters", "Lived Experiences", "Author Colophon"],
+                ui: {
+                    copyQuote: "Copy Quote",
+                    copiedQuote: "Quote copied with author attribution",
+                    copyLink: "Chapter Link",
+                    copiedLink: "Chapter deep link copied",
+                    reflectionLabel: "Chapter Reflection Question:",
+                    reflectBtn: "Answer & Share Your Experience",
+                    attrSuffix: "Siavash Ali-Miri — Honar Zistan"
+                },
+                home: {
+                    badge: "IDENTITY & PHILOSOPHY",
+                    title: "A Journey Toward Self-Knowledge, Renewal & Meaningful Living",
+                    identityQuote: "\"I do not write this book from the place of someone who has found all the answers to life; I write as a human being who has experienced life on both sides of abundance and loss, has fallen, risen again in search, and is still learning and creating.\"",
+                    principle: "\"I have not come to lecture you on how to live; I have come to share my life experiences. Ten deep, resonant pages matter far more than hundreds of hollow ones.\"",
+                    philosophy: "Honar Zistan is not meant to dictate how anyone should live; it exists to help people understand themselves more deeply, choose more consciously, and discover their own meaningful path."
+                },
+                journey: {
+                    badge: "THE HUMAN FOUNDATION (DOC-009, DOC-011 & DOC-012)",
+                    title: "From Abbasabad Bazaar & Loss to Conjugating 'To Want' & the GitHub Pledge",
+                    sections: [
+                        {
+                            heading: "The Northern Trip, Mother's Illness & Two Years of Devoted Care",
+                            body: "Around age thirty, life passed in comfort and financial stability. Years earlier, my mother shared a dream of two angels bringing blessings for her younger son. Later, while my mother, father, and brother were away in northern Iran, my midday call went unanswered; drifting briefly asleep, I woke from a nightmare crying out toward heaven without knowing why. That evening they returned without her—a fall had fractured her pelvic bone, leading to emergency surgery. At her bedside the next morning we learned the truth: metastatic small-cell lung cancer pressing on the pelvic bone had been discovered late.\n\nYet thanks to our family's deep love and joyful, united caregiving, she remained beside us for nearly two precious years. After her passing, as the youngest child, I woke every morning instinctively searching the house for her until grief returned a moment later. I make no scientific claim for her dream; its truth lives in a mother's love that kept hope alive."
+                        },
+                        {
+                            heading: "Father's Legacy in Abbasabad Bazaar, Human Trust & Sudden Passing",
+                            body: "My late father Haj Hossein Ali-Miri began in childhood as an apprentice in a famous merchant's shop in Tehran's Abbasabad Bazaar, becoming a carpet merchant at age thirty—sending his first Iranian carpet shipment to Germany and expanding exports across Europe, the United States, and Canada. Deeply charitable and beloved, he taught us: 'A human being grows great only with people; true wealth comes before possessions—it is credibility and trust among people.'\n\nBefore I could even lean on my father's shoulder in place of my mother, he suddenly passed away as well, and my life's ship ran aground. Amidst the ashes, I remembered my mother's dream and saw my father's kind face, resolving to build Carpet Market in his honor."
+                        },
+                        {
+                            heading: "Mid-Range Android Phone, 'To Want' & the First GitHub Repository Pledge",
+                            body: "I entered app design with zero academic degree and no computer—using only a mid-range Android phone, despite having disliked smartphones years earlier. I fell silent and conjugated the verb 'to want', coding through tears.\n\nWhen I created my first repository on GitHub, I made a solemn pledge inspired by my father: to build apps where anyone worldwide can benefit according to their effort, devotion, and belief—praying that an open table of blessing be spread for all. Firebase and AI became practical companions, inspiring FB NewMeta and the TAVANA creative ecosystem."
+                        }
+                    ]
+                },
+                chaptersTitle: "Unified Book Chapters",
+                chapters: [
+                    {
+                        id: "ch-01",
+                        tag: "Chapter 1 — Companion's Opening",
+                        title: "The Companion's Opening: From Understanding the World to Now",
+                        quote: "\"Living is not merely passing through days; it is the art of learning and bringing meaning to the moments entrusted to us.\"",
+                        text: "Understanding external systems is never enough without knowing ourselves. Peace begins when we create a quiet pause between what happens and how we respond.",
+                        reflection: "Which daily moment most calls for a conscious pause before reacting?"
+                    },
+                    {
+                        id: "ch-02",
+                        tag: "Chapter 2 — DOC-005 & DOC-010",
+                        title: "The Power of One Word & Honest Truth That Awakens",
+                        quote: "\"A single word can transform a person and move the world; yet a whole world can shake and fail to move one human being an inch.\"",
+                        text: "A statement's worth lies not in word count, but in the depth of insight that reshapes how we think and act.\n\n\"An honest word that saddens me and awakens me from sleep is better than a false word that lulls me to sleep and brings false comfort; an honest truth that hurts me is better than a falsehood that pleases me.\"",
+                        reflection: "What honest truth—even when painful—once awakened your perspective?"
+                    },
+                    {
+                        id: "ch-03",
+                        tag: "Chapter 3 — DOC-009 & DOC-011",
+                        title: "The Dream That Stayed With Me: Mother, Grief & Dawn Verse",
+                        quote: "\"Its enduring truth lives in a mother's love that lit my darkest nights.\"",
+                        text: "The northern Iran trip, two years of devoted family care through chemotherapy, and a youngest child's morning grief opening into Persian poetry and quiet endurance.",
+                        reflection: "Which loving memory from family has carried you through your hardest season?"
+                    },
+                    {
+                        id: "ch-04",
+                        tag: "Chapter 4 — Refuge in Loss",
+                        title: "Shelter of the Heart in Loss: Remembrance & the Seed of Ease",
+                        quote: "Verily, in the remembrance of God do hearts find rest. (13:28) — Indeed, with hardship comes ease. (94:5–6)",
+                        text: "Serenity is not the absence of grief; it is finding an anchor amidst waves, trusting that ease dwells alongside hardship.",
+                        reflection: "What inner anchor restores steadiness when everything external feels shaken?"
+                    },
+                    {
+                        id: "ch-05",
+                        tag: "Chapter 5 — DOC-006",
+                        title: "The Power Hidden in Silence & Gentle Mornings",
+                        quote: "\"The strength that does not shout is sometimes the deepest and most enduring human strength.\"",
+                        text: "Mastery over anger differs fundamentally from silence born of fear: true silence comes from awareness and refuses to surrender inner calm to external provocation.",
+                        reflection: "When has conscious restraint protected your peace better than shouting?"
+                    },
+                    {
+                        id: "ch-07",
+                        tag: "Chapter 7 — DOC-001, DOC-011 & DOC-012",
+                        title: "From Abbasabad Bazaar to the GitHub Pledge: Mid-Range Phone & Ethics",
+                        quote: "\"A person's wealth before possessions is credibility among people.\" — Haj Hossein Ali-Miri",
+                        text: "Haj Hossein Ali-Miri's journey from Abbasabad Bazaar apprentice to exporting carpets to Germany, Europe, the US & Canada; rising from ashes on a mid-range Android phone, making the first GitHub repository pledge of an open table for all, and uniting creation with ethics of survival (FB NewMeta & TAVANA).",
+                        reflection: "How does trust among people outweigh material wealth in your own work or life?"
+                    },
+                    {
+                        id: "ch-09",
+                        tag: "Chapter 9 (Epilogue) — DOC-008",
+                        title: "The Path Continues With You",
+                        quote: "\"These pages come to an end; yet the story of human lives goes on.\"",
+                        text: "No single author holds the whole truth of life. Through voluntary, consent-based lived stories, this book remains an ongoing conversation with humanity.",
+                        reflection: "What real experience from your own life would you share to encourage another reader?"
+                    }
+                ],
+                expTitle: "Your Lived Experiences (The Living Book)",
+                expSubtitle: "Share your real experience of setback, stillness, or renewal—save it locally or send it directly via email/Gmail to the author.",
+                expNotice: "Submissions can be sent directly to the author's Gmail (siavashstara@gmail.com) and are also preserved locally on your device.",
+                form: {
+                    name: "Name or Pseudonym (Optional):",
+                    title: "Experience Title:",
+                    category: "Category:",
+                    categories: ["Loss, Ashes & Standing Again", "Inner Peace & Self-Knowledge", "Silence & Conscious Choice", "Health & Balanced Living"],
+                    text: "Full Narrative / Experience:",
+                    consentBook: "Permit inclusion in the Honar Zistan book after editorial review",
+                    consentApp: "Permit publication in the web & mobile application",
+                    submitLocal: "Save on Device",
+                    submitEmail: "Send Directly via Gmail / Email",
+                    copyEmailText: "Copy Email Text",
+                    successMsg: "Your experience has been saved locally on this device.",
+                    copiedEmailMsg: "Email draft copied! Send to siavashstara@gmail.com.",
+                    fillRequiredMsg: "Please enter a title and narrative first.",
+                    savedTitle: "Saved Experiences on This Device:"
+                },
+                colophon: {
+                    title: "Copyright, Attribution & Author Portfolio",
+                    owner: "All material and intellectual rights belong to Mr. Akbar Ali-Miri (Siavash), Developer.",
+                    father: "In loving memory of the late Haj Hossein Ali-Miri, great merchant of Iranian & world carpets.",
+                    emailLabel: "Direct Author Contact:",
+                    portfolio: "Other Works by Developer (Siavash):",
+                    items: "Iranian & Global Carpet Market, LinkLinko, Persian Learning for Foreigners, 3rd Generation Iranians Abroad, Able City Freelancer & Education, Tavana Masters / Fork / Agent, Aferina Ecosystem, FB NewMeta / New Meta City, SakhtemanYar, SalonYar, ClinicYar, TalarYar, DecorMate, Comedy Pilot, Universal Chess, Nexus AI, T-Deploy, TalaYar, Rozgard, Universal Bodybuilding App, and Grand Bodybuilding eBook (Digital)."
+                },
+                footer: "© All rights reserved by Mr. Akbar Ali-Miri (Siavash) | In memory of the late Haj Hossein Ali-Miri"
+            }
+        };
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            clearTimeout(window.__toastTimer);
+            window.__toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+        }
+
+        async function copyText(text, successMsg) {
+            try {
+                await navigator.clipboard.writeText(text);
+                showToast(successMsg);
+            } catch {
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast(successMsg);
+            }
+        }
+
+        function copyQuoteByIndex(section, idx) {
+            const data = contentData[currentLang];
+            let quote = '';
+            if (section === 'home') quote = data.home.identityQuote;
+            if (section === 'chapters') quote = data.chapters[idx]?.quote || '';
+            if (!quote) return;
+            copyText(`${quote}\n— ${data.ui.attrSuffix}`, data.ui.copiedQuote);
+        }
+
+        function copyChapterLink(chId) {
+            const url = `${window.location.origin}${window.location.pathname}#chapters/${chId}`;
+            window.location.hash = `chapters/${chId}`;
+            copyText(url, contentData[currentLang].ui.copiedLink);
+        }
+
+        function goToReflection(promptText) {
+            pendingPromptTitle = promptText;
+            switchTab('experiences', 'experiences');
+        }
+
+        function getSavedExperiences() {
+            try { return JSON.parse(localStorage.getItem('hz_lived_experiences') || '[]'); }
+            catch { return []; }
+        }
+
+        function buildFormPayload() {
+            const titleEl = document.getElementById('exp-title');
+            const textEl = document.getElementById('exp-text');
+            const nameEl = document.getElementById('exp-name');
+            const catEl = document.getElementById('exp-cat');
+            const c1 = document.getElementById('c1');
+            const c2 = document.getElementById('c2');
+            return {
+                id: Date.now(),
+                name: (nameEl?.value || '').trim() || 'ناشناس / Anonymous',
+                title: (titleEl?.value || '').trim(),
+                category: catEl?.value || '',
+                text: (textEl?.value || '').trim(),
+                consentBook: Boolean(c1?.checked),
+                consentApp: Boolean(c2?.checked)
+            };
+        }
+
+        function saveExperience(e) {
+            e.preventDefault();
+            const data = contentData[currentLang];
+            const item = buildFormPayload();
+            if (!item.title || !item.text) {
+                showToast(data.form.fillRequiredMsg);
+                return;
+            }
+            const list = getSavedExperiences();
+            list.unshift(item);
+            localStorage.setItem('hz_lived_experiences', JSON.stringify(list));
+            pendingPromptTitle = '';
+            showToast(data.form.successMsg);
+            renderTab('experiences');
+        }
+
+        function buildEmailBody(item) {
+            return [
+                `Honar Zistan — Lived Experience Submission`,
+                `Author / Pseudonym: ${item.name}`,
+                `Title: ${item.title}`,
+                `Category: ${item.category}`,
+                `Consent (Book): ${item.consentBook ? 'Yes' : 'No'}`,
+                `Consent (App & Web): ${item.consentApp ? 'Yes' : 'No'}`,
+                `Language: ${currentLang.toUpperCase()}`,
+                ``,
+                `--- Narrative ---`,
+                item.text
+            ].join('\n');
+        }
+
+        function sendExperienceEmail() {
+            const data = contentData[currentLang];
+            const item = buildFormPayload();
+            if (!item.title || !item.text) {
+                showToast(data.form.fillRequiredMsg);
+                return;
+            }
+            // Save local backup too
+            const list = getSavedExperiences();
+            list.unshift(item);
+            localStorage.setItem('hz_lived_experiences', JSON.stringify(list));
+
+            const subject = encodeURIComponent(`[Honar Zistan] ${item.title}`);
+            const body = encodeURIComponent(buildEmailBody(item));
+            window.location.href = `mailto:${AUTHOR_EMAIL}?subject=${subject}&body=${body}`;
+        }
+
+        function copyExperienceEmail() {
+            const data = contentData[currentLang];
+            const item = buildFormPayload();
+            if (!item.title || !item.text) {
+                showToast(data.form.fillRequiredMsg);
+                return;
+            }
+            const fullText = `To: ${AUTHOR_EMAIL}\nSubject: [Honar Zistan] ${item.title}\n\n${buildEmailBody(item)}`;
+            copyText(fullText, data.form.copiedEmailMsg);
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'en' ? 'ltr' : 'rtl');
+            document.body.setAttribute('dir', (lang === 'en' ? 'ltr' : 'rtl'));
+            document.body.style.fontFamily = lang === 'en' ? 'system-ui, -apple-system, sans-serif' : 'Vazirmatn, Tahoma, sans-serif';
+
+            const data = contentData[lang];
+            document.getElementById('brand-title').innerText = data.brand;
+            document.getElementById('brand-subtitle').innerText = data.brandSub;
+            document.getElementById('footer-area').innerText = data.footer;
+
+            const tabButtons = document.querySelectorAll('#main-tabs button');
+            data.tabs.forEach((label, idx) => {
+                if (tabButtons[idx]) tabButtons[idx].innerText = label;
+            });
+
+            renderTab(activeTab);
+        }
+
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+        }
+
+        function switchTab(tab, hashOverride) {
+            activeTab = tab;
+            const buttons = document.querySelectorAll('#main-tabs button');
+            buttons.forEach(b => b.classList.toggle('active', b.getAttribute('data-tab') === tab));
+            if (hashOverride !== null) {
+                const newHash = hashOverride || tab;
+                if (window.location.hash !== `#${newHash}`) {
+                    history.replaceState(null, '', `#${newHash}`);
+                }
+            }
+            renderTab(tab);
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function renderQuoteBox(quoteText, copyFnCall, copyLabel) {
+            return `
+                <div class="quote-wrap">
+                    <div class="quote-text">${escapeHtml(quoteText)}</div>
+                    <div class="quote-actions">
+                        <button type="button" class="btn-mini" onclick="${copyFnCall}">📋 ${escapeHtml(copyLabel)}</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderTab(tab) {
+            const data = contentData[currentLang];
+            const area = document.getElementById('content-area');
+
+            if (tab === 'home') {
+                area.innerHTML = `
+                    <div class="card card-accent">
+                        <span class="badge">${escapeHtml(data.home.badge)}</span>
+                        <h1>${escapeHtml(data.home.title)}</h1>
+                        ${renderQuoteBox(data.home.identityQuote, "copyQuoteByIndex('home', 0)", data.ui.copyQuote)}
+                        <p>${escapeHtml(data.home.principle)}</p>
+                        <hr class="divider">
+                        <p>${escapeHtml(data.home.philosophy)}</p>
+                    </div>
+                `;
+            } else if (tab === 'journey') {
+                let html = `<div class="card card-accent"><span class="badge">${escapeHtml(data.journey.badge)}</span><h2>${escapeHtml(data.journey.title)}</h2></div>`;
+                data.journey.sections.forEach(sec => {
+                    html += `<div class="card"><h3>${escapeHtml(sec.heading)}</h3><p>${escapeHtml(sec.body)}</p></div>`;
+                });
+                area.innerHTML = html;
+            } else if (tab === 'chapters') {
+                let html = `<h2>${escapeHtml(data.chaptersTitle)}</h2>`;
+                data.chapters.forEach((ch, idx) => {
+                    html += `
+                        <div class="card" id="${escapeHtml(ch.id)}">
+                            <div class="card-header-row">
+                                <span class="badge">${escapeHtml(ch.tag)}</span>
+                                <button type="button" class="btn-mini" onclick="copyChapterLink('${escapeHtml(ch.id)}')">🔗 ${escapeHtml(data.ui.copyLink)}</button>
+                            </div>
+                            <h3>${escapeHtml(ch.title)}</h3>
+                            ${renderQuoteBox(ch.quote, `copyQuoteByIndex('chapters', ${idx})`, data.ui.copyQuote)}
+                            <p>${escapeHtml(ch.text)}</p>
+                            ${ch.reflection ? `
+                                <div class="reflection-box">
+                                    <span class="reflection-title">${escapeHtml(data.ui.reflectionLabel)}</span>
+                                    <span>${escapeHtml(ch.reflection)}</span>
+                                    <div>
+                                        <button type="button" class="btn-mini btn-gold" data-prompt="${escapeHtml(ch.reflection)}" onclick="goToReflection(this.getAttribute('data-prompt'))">✍️ ${escapeHtml(data.ui.reflectBtn)}</button>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                });
+                area.innerHTML = html;
+            } else if (tab === 'experiences') {
+                const saved = getSavedExperiences();
+                const optionsHtml = data.form.categories.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+                const savedHtml = saved.length ? `
+                    <div class="card">
+                        <h3>${escapeHtml(data.form.savedTitle)}</h3>
+                        ${saved.map(s => `
+                            <div class="story-item">
+                                <strong>${escapeHtml(s.title)}</strong> — <small>${escapeHtml(s.name)} (${escapeHtml(s.category)})</small>
+                                <p style="margin-top:0.45rem;margin-bottom:0;">${escapeHtml(s.text)}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : '';
+                area.innerHTML = `
+                    <div class="card card-accent">
+                        <h2>${escapeHtml(data.expTitle)}</h2>
+                        <p>${escapeHtml(data.expSubtitle)}</p>
+                        <div class="notice-box">✉️ ${escapeHtml(data.expNotice)}</div>
+                        <form onsubmit="saveExperience(event)">
+                            <div class="form-group"><label>${escapeHtml(data.form.name)}</label><input id="exp-name" type="text"></div>
+                            <div class="form-group"><label>${escapeHtml(data.form.title)}</label><input id="exp-title" type="text" value="${escapeHtml(pendingPromptTitle)}" required></div>
+                            <div class="form-group"><label>${escapeHtml(data.form.category)}</label><select id="exp-cat" class="form-select">${optionsHtml}</select></div>
+                            <div class="form-group"><label>${escapeHtml(data.form.text)}</label><textarea id="exp-text" rows="5" required></textarea></div>
+                            <div class="checkbox-group">
+                                <div class="checkbox-row"><input type="checkbox" id="c1"><label for="c1">${escapeHtml(data.form.consentBook)}</label></div>
+                                <div class="checkbox-row"><input type="checkbox" id="c2"><label for="c2">${escapeHtml(data.form.consentApp)}</label></div>
+                            </div>
+                            <div class="btn-row">
+                                <button type="button" class="btn-primary" onclick="sendExperienceEmail()">✉️ ${escapeHtml(data.form.submitEmail)}</button>
+                                <button type="submit" class="btn-gold">💾 ${escapeHtml(data.form.submitLocal)}</button>
+                                <button type="button" onclick="copyExperienceEmail()">📋 ${escapeHtml(data.form.copyEmailText)}</button>
+                            </div>
+                        </form>
+                    </div>
+                    ${savedHtml}
+                `;
+            } else if (tab === 'colophon') {
+                area.innerHTML = `
+                    <div class="card card-accent">
+                        <h2>${escapeHtml(data.colophon.title)}</h2>
+                        <p><strong>${escapeHtml(data.colophon.owner)}</strong></p>
+                        <p style="color: var(--accent-gold); font-weight: 600;">${escapeHtml(data.colophon.father)}</p>
+                        <p>${escapeHtml(data.colophon.emailLabel)} <a href="mailto:${AUTHOR_EMAIL}" style="color:var(--primary-color);font-weight:600;">${AUTHOR_EMAIL}</a></p>
+                        <hr class="divider">
+                        <p><strong>${escapeHtml(data.colophon.portfolio)}</strong></p>
+                        <p style="font-size: 0.92rem; color: var(--text-muted);">${escapeHtml(data.colophon.items)}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function handleHashNavigation() {
+            const raw = window.location.hash.replace(/^#/, '');
+            if (!raw) return;
+            if (raw.startsWith('chapters/')) {
+                const targetId = raw.slice('chapters/'.length);
+                switchTab('chapters', null);
+                setTimeout(() => {
+                    const el = document.getElementById(targetId);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 40);
+                return;
+            }
+            if (['home', 'journey', 'chapters', 'experiences', 'colophon'].includes(raw)) {
+                switchTab(raw, null);
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashNavigation);
+        changeLanguage('fa');
+        handleHashNavigation();
+    </script>
+</body>
+</html>

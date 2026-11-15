@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Surface
@@ -246,6 +247,82 @@ fun SettingsAuthorScreen(
                 text = if (isFa) BookCatalog.authorBioFa else BookCatalog.authorBioEn,
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurface,
+              )
+            }
+          }
+        }
+
+        // Copyright and Author Portfolio Colophon
+        item {
+          Surface(
+            modifier = Modifier.fillMaxWidth(),
+            shape = MaterialTheme.shapes.medium,
+            color = MaterialTheme.colorScheme.surface,
+            border = BorderStroke(0.75.dp, extra.goldAccent.copy(alpha = 0.35f)),
+          ) {
+            Column(modifier = Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+              Text(
+                text = if (isFa) "حقوق مادی و معنوی اثر" else "Copyright & Intellectual Property",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+              )
+              Text(
+                text = if (isFa) 
+                  "کلیه حقوق مادی و معنوی این اثر متعلق است به آقای اکبر علی‌میری (سیاوش)، توسعه‌دهنده."
+                else 
+                  "All material and intellectual rights of this work belong to Mr. Akbar Ali-Miri (Siavash), Developer.",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface,
+              )
+
+              HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
+
+              Text(
+                text = if (isFa) "سایر آثار و محصولات از همین توسعه‌دهنده (سیاوش):" else "Other Works by the Same Developer (Siavash):",
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+              )
+              Text(
+                text = if (isFa) 
+                  "• فرش بازار ایران و جهان (به یاد پدر مرحوم حاج حسین‌آقای علی‌میری، تاجر بزرگ فرش ایران و جهان)\n" +
+                  "• لینک‌لینکوی (LinkLinko)\n" +
+                  "• آموزش زبان فارسی به انگلیسی‌زبانان\n" +
+                  "• نسل سوم بچه‌های ایرانی خارج از کشور (در پاسداشت زبان مادری‌ام فارسی)\n" +
+                  "• ایبل‌سیتی فریلنسر (Able City Freelancer)\n" +
+                  "• ایبل‌سیتی اجوکیشن (Able City Education)\n" +
+                  "• توانا مسترها (Tavana Masters)\n" +
+                  "• اکوسیستم آفرینش (آفرینا / Aferina)\n" +
+                  "• شهر جدید نیومتا / متاورس جهان (FB New Meta)\n" +
+                  "• ساختمان‌یار، سالن‌یار، کلینیک‌یار، تالار‌یار، دکورمیت\n" +
+                  "• برنامه‌ی کمدی پایلت (Comedy Pilot)\n" +
+                  "• شطرنج هم‌جهان\n" +
+                  "• توانا فورک، توانا اگنت\n" +
+                  "• هوش مصنوعی نکسوس (Nexus AI)\n" +
+                  "• سرویس خدمات هوش مصنوعی\n" +
+                  "• تی‌دیپلوی (T-Deploy)\n" +
+                  "• طلایار (TalaYar)\n" +
+                  "• روزگارد (Rozgard)\n" +
+                  "• و ده‌ها برنامه‌ی دیگر برای فریلنسرها، تولیدکنندگان محتوا و توسعه‌دهندگان وب، اپلیکیشن و گیم.\n" +
+                  "• اپلیکیشن اختصاصی بدنسازی برای همه رشته‌ها\n" +
+                  "• کتاب جامع بزرگ بدنسازی برای همه رشته‌ها (کتاب اینترنتی / دیجیتال)"
+                else
+                  "• Iranian & Global Carpet Market (Dedicated to the late father Haj Hossein Ali-Miri, great carpet merchant)\n" +
+                  "• LinkLinko\n" +
+                  "• Persian Language Learning for English Speakers\n" +
+                  "• 3rd Generation Iranian Youth Abroad (Honoring the Persian Mother Tongue)\n" +
+                  "• Able City Freelancer & Education\n" +
+                  "• Tavana Masters & Fork & Agent\n" +
+                  "• Aferina Creation Ecosystem\n" +
+                  "• New Meta City / FB New Meta Metaverse\n" +
+                  "• SakhtemanYar, SalonYar, ClinicYar, TalarYar, DecorMate\n" +
+                  "• Comedy Pilot, Universal Chess\n" +
+                  "• Nexus AI & AI Services\n" +
+                  "• T-Deploy, TalaYar, Rozgard\n" +
+                  "• And dozens of other applications for freelancers, content creators, web/app/game developers.\n" +
+                  "• Universal Bodybuilding Application for all disciplines\n" +
+                  "• Comprehensive Grand Bodybuilding eBook (Digital Edition)",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
               )
             }
           }

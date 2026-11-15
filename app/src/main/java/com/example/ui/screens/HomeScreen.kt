@@ -107,9 +107,9 @@ fun HomeScreen(
               Text(
                 text =
                   if (isFa) {
-                    "مجموعه‌ای ادبی و مصور در باب حضور، شعر فارسی، تدبر در آیات الهی و توازن زیستِ روزمره."
+                    "سفری برای شناخت خویشتن، فهم جهان و آموختن هنر بهتر زیستن — نه برای درس دادن، که برای سهیم شدن در تجربه‌های زندگی."
                   } else {
-                    "An illustrated literary volume on mindful presence, Persian verse, Quranic reflection, and balanced living."
+                    "A living journey through self-knowledge, loss, renewal, and the art of meaningful living—shared from real experience."
                   },
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -213,7 +213,7 @@ fun HomeScreen(
           SectionHeaderRow(
             title = if (isFa) "بخش‌های اصلی کتاب" else "Book Parts & Disciplines",
             subtitle =
-              if (isFa) "ساختار سه‌گانه‌ی هنر زیستن" else "Three interconnected volumes of reflection",
+              if (isFa) "ساختار چهارگانه‌ی هنر زیستن" else "Four interconnected volumes of reflection",
             action = {
               TextButton(
                 onClick = onOpenAllChapters,

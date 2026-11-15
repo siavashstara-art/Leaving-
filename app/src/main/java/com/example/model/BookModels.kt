@@ -80,7 +80,7 @@ sealed interface ReaderBlock {
   ) : ReaderBlock
 
   data class Illustration(
-    @DrawableRes val drawableRes: Int,
+    @param:DrawableRes val drawableRes: Int,
     val conceptFa: String,
     val conceptEn: String,
     val captionFa: String,

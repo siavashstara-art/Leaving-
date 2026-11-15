@@ -152,52 +152,51 @@ fun NarrationStudioScreen(
     )
 
     EditorialReadingColumn(modifier = Modifier.weight(1f)) {
-      LazyColumn(
-        modifier = Modifier.fillMaxSize().testTag("narration_studio_list"),
-        contentPadding = PaddingValues(horizontal = 22.dp, vertical = 20.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-      ) {
-        item {
-          SectionHeaderRow(
-            title = if (isFa) "استودیوی تولید کتاب صوتی" else "Persian Audiobook Studio",
-            subtitle =
-              if (isFa) "انتخاب گوینده، آماده‌سازی متن، ضبط یا واردکردن صدا، بازبینی کیفیت، تأیید و خروجی"
-              else "Narrator selection, script sync, recording/import, quality review, approval & export",
-          )
-        }
-
-        // Feedback Banner
+      Column(modifier = Modifier.fillMaxSize()) {
+        // Feedback Banner (pinned above list so scrolled actions are visible immediately)
         uiState.studioFeedback?.let { fb ->
-          item {
-            Surface(
-              modifier = Modifier.fillMaxWidth(),
-              shape = MaterialTheme.shapes.small,
-              color =
-                if (fb.isError) MaterialTheme.colorScheme.errorContainer
-                else MaterialTheme.colorScheme.primaryContainer,
-              border =
-                BorderStroke(
-                  0.75.dp,
-                  if (fb.isError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
-                ),
+          Surface(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 22.dp, vertical = 8.dp).testTag("studio_feedback_banner"),
+            shape = MaterialTheme.shapes.small,
+            color =
+              if (fb.isError) MaterialTheme.colorScheme.errorContainer
+              else MaterialTheme.colorScheme.primaryContainer,
+            border =
+              BorderStroke(
+                0.75.dp,
+                if (fb.isError) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary,
+              ),
+          ) {
+            Row(
+              modifier = Modifier.fillMaxWidth().padding(12.dp),
+              verticalAlignment = Alignment.CenterVertically,
+              horizontalArrangement = Arrangement.SpaceBetween,
             ) {
-              Row(
-                modifier = Modifier.fillMaxWidth().padding(12.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
-              ) {
-                Text(
-                  text = if (isFa) fb.messageFa else fb.messageEn,
-                  style = MaterialTheme.typography.bodyMedium,
-                  modifier = Modifier.weight(1f),
-                )
-                TextButton(onClick = onClearFeedback) { Text(if (isFa) "بستن" else "Dismiss") }
-              }
+              Text(
+                text = if (isFa) fb.messageFa else fb.messageEn,
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.weight(1f),
+              )
+              TextButton(onClick = onClearFeedback) { Text(if (isFa) "بستن" else "Dismiss") }
             }
           }
         }
 
-        if (permissionDeniedNotice) {
+        LazyColumn(
+          modifier = Modifier.weight(1f).fillMaxWidth().testTag("narration_studio_list"),
+          contentPadding = PaddingValues(horizontal = 22.dp, vertical = 20.dp),
+          verticalArrangement = Arrangement.spacedBy(16.dp),
+        ) {
+          item {
+            SectionHeaderRow(
+              title = if (isFa) "استودیوی تولید کتاب صوتی" else "Persian Audiobook Studio",
+              subtitle =
+                if (isFa) "انتخاب گوینده، آماده‌سازی متن، ضبط یا واردکردن صدا، بازبینی کیفیت، تأیید و خروجی"
+                else "Narrator selection, script sync, recording/import, quality review, approval & export",
+            )
+          }
+
+          if (permissionDeniedNotice) {
           item {
             Surface(
               modifier = Modifier.fillMaxWidth(),
@@ -814,6 +813,7 @@ fun NarrationStudioScreen(
             }
           }
         }
+      }
       }
     }
   }

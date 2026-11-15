@@ -163,19 +163,15 @@ class HonarZistanRobolectricTest {
     composeTestRule.onNodeWithTag("prepare_script_btn").performClick()
     composeTestRule.waitUntil(timeoutMillis = 5000) {
       composeTestRule
-        .onAllNodesWithTag("studio_segment_ch_01_seg_0")
+        .onAllNodesWithTag("studio_feedback_banner")
         .fetchSemanticsNodes()
-        .isNotEmpty() ||
-        runCatching {
-            composeTestRule
-              .onNodeWithTag("narration_studio_list")
-              .performScrollToNode(hasTestTag("studio_segment_ch_01_seg_0"))
-          }
-          .isSuccess
+        .isNotEmpty()
     }
+    composeTestRule.waitForIdle()
     composeTestRule
       .onNodeWithTag("narration_studio_list")
       .performScrollToNode(hasTestTag("studio_segment_ch_01_seg_0"))
+    composeTestRule.waitForIdle()
     composeTestRule.onNodeWithTag("studio_segment_ch_01_seg_0").assertIsDisplayed()
 
     // Select unapproved draft ch_07 and verify Editorial Lock Banner appears

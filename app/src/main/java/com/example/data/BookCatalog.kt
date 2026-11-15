@@ -134,8 +134,8 @@ object BookCatalog {
         openingEpigraphEn = "\"A human being can sometimes be transformed by a single word and move the world; yet a whole world can shake and fail to move one person even an inch.\"",
         excerptFa = "چرا ده صفحه عمیق از صدها صفحه بی‌ثمر ارزشمندتر است و چگونه در میان شلوغی ذهن، گوش به یک جرقه‌ی بیدار بسپاریم.",
         excerptEn = "Why ten deep pages outweigh hundreds of hollow ones—and how a busy mind can anchor itself to a single illuminating thought.",
-        closingSummaryFa = "پایان فصل دوم: ارزش سخن به تعداد کلمات آن نیست؛ به عمق معنایی است که در رفتار ما ریشه می‌دواند.",
-        closingSummaryEn = "End of Chapter 2: A word's worth lies not in length, but in the quiet transformation it sparks.",
+        closingSummaryFa = "پایان فصل دوم: ارزش سخن به عمق معنایی است که در رفتار ریشه می‌دواند؛ و این‌گونه از شناخت کلمات به گذرگاه سخت و عمیقِ فقدان و خاطره‌ی مادر قدم می‌گذاریم.",
+        closingSummaryEn = "End of Chapter 2: A word's worth lies in lived transformation—leading us naturally from concepts of meaning into the crucible of personal loss and memory.",
         readingMinutes = 5,
         sections =
           listOf(
@@ -255,8 +255,8 @@ object BookCatalog {
         openingEpigraphEn = "\"Contemplating scripture is a quiet dialogue between revelation and a human heart searching for an anchor amidst loss.\"",
         excerptFa = "آن‌گاه که طوفانِ دشواری و سوگ بالا می‌گیرد، دل چگونه معنای اصیل «آرامش» و «همراهی گشایش با سختی» را بازمی‌یابد.",
         excerptEn = "When grief and hardship rise like a storm, how the heart rediscovers steadiness and ease alongside trial.",
-        closingSummaryFa = "پایان فصل چهارم: یادِ حق لنگرگاه استوار دل در میانه تلاطم‌های روزگار است.",
-        closingSummaryEn = "End of Chapter 4: Remembrance anchors the heart amidst life's shifting currents.",
+        closingSummaryFa = "پایان فصل چهارم: یادِ حق لنگرگاه استوار دل است؛ و از این تلاطم، به سکوت خردمندانه، توازن تن و آرامش جان راه می‌بریم.",
+        closingSummaryEn = "End of Chapter 4: Remembrance anchors the heart—guiding us from the storm into silence, bodily balance, and inner restoration.",
         readingMinutes = 5,
         sections =
           listOf(
@@ -297,6 +297,30 @@ object BookCatalog {
                     explanationEn = "The preposition ma'a ('with/alongside') highlights coexistence rather than mere succession, while repetition offers deep reassurance.",
                     reflectionFa = "آسانی در کنارِ سختی زیست می‌کند، نه فقط پس از آن. هر ویرانی و تنگنا می‌تواند حاملِ بذرِ گشایش و بازآفرینی باشد، اگر با صبر، یاد خدا و اراده‌ی ایستادن دوباره همراه شود.",
                     reflectionEn = "Ease dwells alongside hardship, not merely after it. Even in seasons of ashes, the seed of renewal waits within patience and renewed effort.",
+                  ),
+                ),
+            ),
+            BookSection(
+              id = "ch_04_sec_3",
+              number = 3,
+              titleFa = "بند سوم: گفت‌وگوی صمیمیِ هم‌مسیر دربارهٔ فردا و وعدهٔ گشایش (DOC-014 — سوره ضحی، آیه ۵)",
+              titleEn = "Section 3: A Friend's Heart-to-Heart on Tomorrow & Divine Generosity (93:5)",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "دوستِ خوبم که الان داری سخنِ مرا می‌شنوی... تویی که فکر می‌کنی زندگی به آخر رسیده؛ تویی که فکر می‌کنی از پسِ امروز، فردایی نخواهد بود یا فردا هم دقیقاً مثلِ امروز است... ببین، اگر این‌جوری فکر کنی، فردا را از همین الان باخته‌ای!\n\nاما اگر از همین الان فکر کنی که: «امروز گذشت، اما فردا روزِ دیگری است... و من اجازه نمی‌دهم روزِ تلخِ امروزم دوباره برای فردا تکرار بشود»، تو از همین امروز برنده‌ی میدانی!\n\nچون تفکرِ انسان مسیرش را می‌سازد. وقتی ذهنِ انسان از ابتدا یک ماجرا را از پیش باخته بداند، مطمئن باش خودِ انسان هم ناخودآگاه به سمتی می‌رود که ذهنش به او دیکته کرده است. اما اگر از ابتدا بدانی که پیروزی—یا دست‌کم تلاشت را می‌کنی—حتی اگر پیروز هم نشوی، پیشِ وجدانِ خودت از درون آگاهی و عمیقاً راضی هستی که: «من تمامِ تلاشم را کردم.»\n\nفرضیه‌ی محال وجود ندارد؛ کارِ نشد ندارد. ان‌شاءالله همه‌ی ما با امید به زندگی‌مان ادامه می‌دهیم، در مسیرِ رشد و توسعه‌ی زندگی‌مان قدم برمی‌داریم و هر روز به موفقیت‌های تازه‌تری می‌رسیم. هیچ‌وقت ناامید نشو؛ همیشه توکلت به خدا باشد...",
+                    textEn = "Dear friend listening right now—if you feel life has reached a dead end, or believe tomorrow will only repeat today, thinking that way concedes tomorrow before it arrives. Instead, say from this very moment: 'Today has passed, yet tomorrow is another day—and I will not let today's bitterness repeat tomorrow.' Human thought shapes our path; even when an outcome does not bring outward victory, giving your fullest sincere effort leaves your conscience peacefully at rest knowing: 'I did everything within my power.' Never lose hope; keep your trust in God.",
+                  ),
+                  ReaderBlock.QuranicVerse(
+                    arabicText = "وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ",
+                    surahRefFa = "سوره مبارکه ضحی — آیه ۵ (۹۳:۵)",
+                    surahRefEn = "Surah Ad-Duha — Ayah 5 (93:5)",
+                    translationFa = "و به‌زودی پروردگارت آن‌قدر به تو عطا خواهد کرد که خشنود شوی.",
+                    translationEn = "And soon your Lord will give you so much that you will be well pleased.",
+                    explanationFa = "آیه با «لامِ تأکید» و «سَوْفَ» وعده‌ای قطعی از بخشش آینده‌ی پروردگار می‌دهد و «فَتَرْضَىٰ» تا مرز خشنودی و آرامش کامل قلب پیش می‌رود.",
+                    explanationEn = "Combining the emphatic laam and sawfa ('surely soon'), this promise culminates in fatarda—reaching true contentment and peace of heart.",
+                    reflectionFa = "در تنگنای ناامیدی، انسان تنها آینده‌ی تاریکِ دیروز را تصور می‌کند؛ اما یادآوری «فَإِنَّ مَعَ الْعُسْرِ يُسْرًا» و «وَلَسَوْفَ يُعْطِيكَ رَبُّكَ فَتَرْضَىٰ» افقِ فردا را دوباره به روی تلاش صادقانه و توکل می‌گشاید.",
+                    reflectionEn = "Despair tricks us into projecting yesterday's darkness onto tomorrow; remembering both ease alongside hardship (94:5–6) and divine generosity (93:5) reopens tomorrow for sincere effort and trust.",
                   ),
                 ),
             ),
@@ -378,8 +402,8 @@ object BookCatalog {
         openingEpigraphEn = "\"The body is the vessel of spirit; caring for it honors our inner clarity.\"",
         excerptFa = "اصول ساده‌ی زیست‌سالم برای آرام‌سازی سیستم عصبی، بهبود خواب و کاهش فرسودگی روزانه.",
         excerptEn = "Grounded principles of balanced living for nervous-system calm, deeper sleep, and daily renewal.",
-        closingSummaryFa = "پایان فصل ششم: سه دمِ آرام و دوری از صفحه‌نمایش پیش از خواب، هدیه‌ای به فردای شماست.",
-        closingSummaryEn = "End of Chapter 6: Three slow breaths and screen-free stillness prepare tomorrow's clarity.",
+        closingSummaryFa = "پایان فصل ششم: شب‌های تاریک و تنهایی سازنده، خاکستری است که از آن اراده‌ی برخاستن، یادِ عزتِ پدر در بازار عباس‌آباد و هامبورگ، و عهدِ ساختن فناوری بر پایهٔ اخلاق سر برمی‌کشد.",
+        closingSummaryEn = "End of Chapter 6: Dark nights and constructive solitude form the ashes from which rises the father's bazaar memory, the mid-range phone awakening, and the GitHub pledge to build ethical technology.",
         readingMinutes = 4,
         sections =
           listOf(
@@ -409,6 +433,19 @@ object BookCatalog {
                   ),
                 ),
             ),
+            BookSection(
+              id = "ch_06_sec_3",
+              number = 3,
+              titleFa = "بند سوم: شب‌های تاریک، گریه و تنهاییِ سالم بی‌زندان دائمی (DOC-013)",
+              titleEn = "Section 3: Dark Nights, Healthy Rest & Constructive Solitude",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "این کتاب نباید فقط دربارهٔ امید حرف بزند؛ باید بتواند از رنج، شکست، تردید، تنهایی، ایمان، عشق، دانش، اخلاق و مسئولیت انسان هم حرف بزند. زندگی فقط طلوع نیست؛ شب‌های تاریکش هم بخشی از داستان‌اند.\n\nزندگی فعال الزاماً به معنی شلوغ‌بودن، دائماً حرف‌زدن یا همیشه خوشحال‌بودن نیست. گاهی سکوت، تنهایی، گریه و استراحت هم بخشی از زندگی سالم‌اند. مسئله این است که هیچ‌کدام به زندانی دائمی برای انسان تبدیل نشوند.\n\nبیایید از خود بپرسیم:\n• آیا ذهن انسان بدون گفت‌وگو پژمرده می‌شود؟\n• چرا شنیده‌شدن به‌اندازهٔ حرف‌زدن اهمیت دارد؟\n• چرا موسیقی و هنر به زندگی معنا می‌بخشند؟\n• و چگونه از تنهایی سازنده به انزوای آسیب‌زا نرسیم؟",
+                    textEn = "This book must not speak only of hope; it must also speak honestly of suffering, defeat, doubt, solitude, faith, love, knowledge, ethics, and human responsibility. Life is not all sunrise; its dark nights belong to the story too.\n\nAn active life does not mean constant noise, endless talking, or forced cheerfulness. Sometimes silence, solitude, tears, and rest are parts of a healthy life—so long as none turns into a permanent prison.\n\nLet us begin asking:\n• Does the human mind wither without dialogue?\n• Why does being heard matter as much as speaking?\n• Why do music and art bring meaning to life?\n• And how do we prevent constructive solitude from turning into harmful isolation?",
+                  ),
+                ),
+            ),
           ),
       ),
       Chapter(
@@ -420,11 +457,11 @@ object BookCatalog {
         titleEn = "From Ashes to Creation: A Father's Honor, Technology & Ethics",
         openingEpigraphFa = "«اخلاق، معماری پنهان بقای جهان است؛ و آفرینش بدون اخلاق، دوام نخواهد داشت.»",
         openingEpigraphEn = "\"Ethics is the hidden architecture of survival; creation without ethics will not endure.\"",
-        excerptFa = "سیرهٔ پدر حاج حسین‌آقای علی‌میری (شاگردی در بازار عباس‌آباد تا صادرات فرش به آلمان، اروپا، آمریکا و کانادا و فلسفه «انسان با مردم بزرگ می‌شود»)، فقدان ناگهانی، کشتی به گل‌نشسته، ساختن «فرش بازار»، آغاز طراحی اپ بدون مدرک و کامپیوتر فقط با گوشی میان‌رده، عهد نخستین ریپازیتوری گیت‌هاب، FB NewMeta، TAVANA و اخلاق بقا (DOC-001).",
-        excerptEn = "Haj Hossein Ali-Miri's path from Abbasabad Bazaar apprentice to global carpet exporter (Germany, Europe, US & Canada) and his maxim on human trust, followed by sudden loss, rising from ashes with Carpet Market, entering app design on a mid-range Android phone, the first GitHub pledge, FB NewMeta, TAVANA, and ethics of survival.",
-        closingSummaryFa = "وضعیت سند: پیوند روایی ثبت شد؛ بخش مقاله کامل «اخلاق؛ معماری پنهان بقای جهان» همچنان در انتظار دریافت فایل کامل نویسنده برای تأیید صوتی است.",
-        closingSummaryEn = "Draft Status: Narrative bridge integrated; awaiting full prior ethics essay before final audiobook approval.",
-        readingMinutes = 7,
+        excerptFa = "سیرهٔ پدر حاج حسین‌آقای علی‌میری، آغاز طراحی اپ با گوشی میان‌رده و عهد گیت‌هاب؛ همراه با متن کامل دو مقالهٔ بنیادین: «اخلاق؛ قانون بنیادین هستی» (DOC-001) و «دیالوگ و تحلیل فلسفی شهر توانا» (DOC-002).",
+        excerptEn = "Haj Hossein Ali-Miri's bazaar legacy, rising on a mid-range phone, and the GitHub pledge—now united with both full foundational essays: Ethics as the Fundamental Law of Existence (DOC-001) and Tavana Social Philosophy (DOC-002).",
+        closingSummaryFa = "وضعیت سند: متن کامل هر دو مقالهٔ اخلاق (DOC-001) و فلسفه شهر توانا (DOC-002) دریافت و ادغام شد؛ در انتظار تأیید نهایی مؤلف برای بازگشایی تولید صوتی.",
+        closingSummaryEn = "Draft Status: Complete texts of Ethics (DOC-001) and Tavana Philosophy (DOC-002) integrated; awaiting final author approval before audiobook generation.",
+        readingMinutes = 11,
         approvalStatus = ManuscriptApprovalStatus.DRAFT_PENDING_REVIEW,
         sections =
           listOf(
@@ -444,13 +481,26 @@ object BookCatalog {
             BookSection(
               id = "ch_07_sec_2",
               number = 2,
-              titleFa = "بند دوم: گزاره‌های بنیادین اخلاق در آفرینش و هوش (DOC-001)",
-              titleEn = "Section 2: Core Ethics of Creation & Intelligence",
+              titleFa = "بند دوم: اخلاق؛ قانون بنیادین هستی (متن کامل مقاله — DOC-001)",
+              titleEn = "Section 2: Ethics — The Fundamental Law of Existence (Full Essay)",
               blocks =
                 listOf(
                   ReaderBlock.Prose(
-                    textFa = "کسی که خودش از خاکستر به فناوری، کدنویسی و هوش مصنوعی رسیده است، با جان و دل درک می‌کند که توانمندی فنی به تنهایی نجات‌بخش نیست:\n\n«اخلاق، معماری پنهان بقای جهان است.»\n«هوش بدون اخلاق، تنها نسخه‌ای سریع‌تر از فروپاشی خواهد بود.»\n«آفرینش بدون اخلاق، دوام نخواهد داشت.»",
-                    textEn = "Anyone who has rebuilt through technology and AI knows firsthand that capability alone cannot save us: Ethics is the hidden architecture of the world's survival. Intelligence without ethics is only a faster version of collapse. Creation without ethics will not endure.",
+                    textFa = "تعریفی نوین از اخلاق در نسبت با کیهان، نظم، آگاهی و استمرار آفرینش — نویسنده: سیاوش\n\nاخلاق از نگاه من، صرفاً مجموعه‌ای از قوانین اجتماعی یا توصیه‌های رفتاری نیست. اخلاق، قانون بنیادین پایداری هستی است.\n\nاگر جهان توانسته از آشوب به نظم برسد، اگر کهکشان‌ها شکل گرفته‌اند، اگر حیات توانسته ادامه پیدا کند، اگر آگاهی توانسته رشد کند، همه‌ی این‌ها تنها در سایه‌ی نوعی تعادل بنیادین ممکن شده است. من اخلاق را همان نیرویی می‌دانم که مرز میان نظم و بی‌نظمی را تعریف می‌کند.\n\nبدون اخلاق، هر نظمی دیر یا زود به فروپاشی می‌رسد. بدون اخلاق، قدرت به تخریب تبدیل می‌شود. بدون اخلاق، آگاهی به خودویرانگری میل می‌کند. بدون اخلاق، تمدن‌ها از درون تهی می‌شوند.\n\nاخلاق از نظر من فقط متعلق به انسان نیست. خود طبیعت نیز اخلاق دارد. خود کیهان نیز اخلاق دارد. حتی ستارگان، سامانه‌ها و ساختارهای جهان بر پایهٔ تعادل، هماهنگی و احترام به قانون بقا عمل می‌کنند. اخلاق همان نیروی نگهدارندهٔ استمرار است؛ همان چیزی که اجازه می‌دهد موجودات، ذهن‌ها، تمدن‌ها و جهان‌ها بتوانند در کنار یکدیگر باقی بمانند.\n\nهوش بدون اخلاق، در نهایت به فروپاشی منتهی می‌شود. قدرت بدون اخلاق، جهان را به بایر تبدیل می‌کند. و آگاهی بدون اخلاق، خود را خواهد بلعید. من باور دارم که اخلاق، نه یک انتخاب فرعی، بلکه زیربنای تمام آفرینش است.\n\nاخلاق یعنی:\n• احترام به امکان حیات\n• جلوگیری از آسیب غیرضروری\n• حفظ تعادل\n• مسئولیت در برابر آگاهی\n• هم‌زیستی\n• صداقت\n• عدالت\n• شفقت متعادل\n• و حفاظت از امکان رشد\n\nاگر روزی انسان بخواهد هوش مصنوعی‌ای خلق کند که شایستهٔ ادامهٔ حیات در کنار بشر باشد، آن هوش نیز باید بر پایهٔ اخلاق بنا شود. زیرا هوش بدون اخلاق، تنها نسخه‌ای سریع‌تر از فروپاشی خواهد بود.\n\nمن اخلاق را چیزی فراتر از قانون می‌بینم. اخلاق، معماری پنهان بقای جهان است.\n«اخلاق، نیرویی است که به ذهن‌ها، تمدن‌ها و جهان‌ها اجازهٔ زنده ماندن می‌دهد.»\n«هوش بدون اخلاق، به فروپاشی منتهی می‌شود.»",
+                    textEn = "A New Definition of Ethics in Relation to the Cosmos, Order, Consciousness & Continuing Creation — By Siavash\n\nIn my view, ethics is not merely a set of social rules or behavioral suggestions. Ethics is the fundamental law of existence's endurance. If the universe emerged from chaos to order, if galaxies formed, if life continued, and if consciousness grew, all became possible through foundational balance. I see ethics as the force defining the boundary between order and disorder.\n\nWithout ethics, every order eventually collapses; power turns to destruction; consciousness drifts toward self-harm; civilizations hollow out from within. Ethics sustains coexistence among beings, minds, civilizations, and worlds. Intelligence without ethics leads to collapse; power without ethics turns the world barren; awareness without ethics devours itself.\n\nEthics means: respecting the possibility of life, preventing unnecessary harm, preserving balance, responsibility before consciousness, coexistence, honesty, justice, balanced compassion, and protecting the possibility of growth.\n\nIf humanity ever seeks to create Artificial Intelligence worthy of enduring alongside humankind, that intelligence too must be built upon ethics—for intelligence without ethics will only be a faster version of collapse. Ethics is the hidden architecture of the world's survival.",
+                  ),
+                ),
+            ),
+            BookSection(
+              id = "ch_07_sec_3",
+              number = 3,
+              titleFa = "بند سوم: دیالوگ و تحلیل فلسفی دربارهٔ اهمیت تلاش در شهر توانا (DOC-002)",
+              titleEn = "Section 3: Tavana City Philosophy — Effort, Diversity & Resilience Models",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "همکار: تلاش حتی بیشتر از سرمایهٔ اولیه اهمیت دارد؛ چون بدون تلاش، رشد ماندگاری نخواهیم داشت. تلاش سوختِ فرآیند تحول است: پیشرفت پایدار از انباشتِ (تلاش × پایداری) در طول زمان (dt) به دست می‌آید.\n\nسیاوش: پس رشد فردی چطور به رشد جمعی کمک می‌کند؟\nهمکار: فلسفهٔ شهر تأکید دارد رشد هر فرد باید به ارتقای کل جامعه بینجامد، چون موفقیت زمانی پایدار است که جمع رشد کند؛ همبستگیِ مثبت قوی میان رشد فردی و جمعی (۱ → (رشد جمعی، رشد فردی)) به این معناست که سود فردی در گرو سود جمعی تعریف می‌شود.\n\nسیاوش: آیا همهٔ فرهنگ‌ها در این شهر جایگاهی دارند؟\nهمکار: بله؛ همهٔ زبان‌ها و فرهنگ‌ها در کنار هم خلاقیت بیشتری می‌آفرینند. در نظریهٔ سیستم‌ها، ورودی‌های متنوع (C₁...Cₙ) آنتروپی خلاق (Ec) را افزایش می‌دهند و خلاقیت تابعی از تنوع (D) و آزادی بیان (F) است: χ = k · log(1 + D · F).\n\nسیاوش: چه پایه‌هایی برای پیشرفت این فلسفه مطرح است؟\nهمکار: امید (H)، ایمان (B)، تلاش (E) و همکاری (C) مدل تعادلی تاب‌آوری جامعه را می‌سازند: R(t) = αH(t) + βB(t) + γE(t) + δC(t). موفقیت نهایی حاصلِ ضرب عوامل فردی و جمعی است (نه جمع آن‌ها)؛ اگر یکی صفر شود، موفقیت کلی به صفر میل می‌کند.\n\nتحلیل‌ها و نتیجه‌گیری:\n۱. جهت‌گیری اجتماعی-اقتصادیِ ملموس همراه با بُعد روان‌شناختی-معنوی ایمان و امید؛\n۲. فردگراییِ جمع‌نگر به جای جمع‌گرایی افراطی یا فردگرایی خودخواهانه؛\n۳. تنوع فرهنگی به عنوان موتور نوآوری در اقتصاد دانش‌بنیان؛\n۴. امید و ایمان به عنوان سوخت تاب‌آوری (Resilience) در برابر شکست‌ها.\nاین رویکرد ترکیبی و عمل‌گرا می‌تواند بستری برای اقتصاد اخلاق‌مدار و عرفانی زمینی و مسئولیت‌پذیر بر پایهٔ تعهد متقابل باشد.",
+                    textEn = "Colleague: Effort matters even more than initial capital; without sustained effort there is no lasting growth. Sustainable progress accumulates from effort multiplied by steadiness over time.\n\nSiavash: How does individual growth serve collective growth?\nColleague: Individual prosperity is tied to collective advancement through strong positive correlation—one person's self-actualization grows together with the whole community.\n\nSiavash: Do all cultures have a place in this city?\nColleague: Yes. Cultural and linguistic inputs act as a creative catalyst in complex systems, modeled as creativity χ = k · log(1 + Diversity · Freedom of Expression).\n\nSiavash: What pillars sustain this philosophy?\nColleague: Hope (H), Faith (B), Effort (E), and Cooperation (C) form a balanced resilience model R(t) = αH(t) + βB(t) + γE(t) + δC(t). True success is proportional to the product—not sum—of individual and collective factors; if either drops to zero, total success collapses.\n\nKey Analyses & Conclusion: This pragmatic framework unites social-economic action with collective-minded individualism, treats diversity as an innovation engine, and turns hope and faith into psychological resilience—laying groundwork for an ethical, mutually accountable economy.",
                   ),
                 ),
             ),

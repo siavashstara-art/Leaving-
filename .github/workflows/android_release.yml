@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,30 +16,23 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17'
-        cache: gradle
+        java-version: '21'
+
+    - name: Setup Gradle
+      uses: gradle/actions/setup-gradle@v4
 
     - name: Grant execute permission for Gradle wrapper
-      run: chmod +x gradlew || true
+      run: chmod +x gradlew
 
-    - name: Run Unit Tests
-      run: gradle :app:testDebugUnitTest
-
-    - name: Build Signed APK (Release)
+    - name: Build Signed APK & App Bundle (Release)
       env:
         STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
         KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      run: gradle assembleRelease
-
-    - name: Build Signed App Bundle (AAB for Google Play)
-      env:
-        STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      run: gradle bundleRelease
+      run: ./gradlew assembleRelease bundleRelease -x test
 
     - name: Upload Signed APK
       uses: actions/upload-artifact@v4

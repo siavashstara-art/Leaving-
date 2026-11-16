@@ -178,6 +178,19 @@ object BookCatalog {
                   ),
                 ),
             ),
+            BookSection(
+              id = "ch_02_sec_4",
+              number = 4,
+              titleFa = "بند چهارم: گذرگاه آینه؛ برخاستن از خاکستر فقدان و دوستی با خود (DOC-015)",
+              titleEn = "Section 4: The Mirror's Crossing — Rising From the Ashes of Loss & Self-Friendship",
+              blocks =
+                listOf(
+                  ReaderBlock.Prose(
+                    textFa = "پس از آنکه مادرم رفت و به فاصلهٔ چند ماه پدر عزیزم نیز از میان ما پر کشید، در خود فرو شکستم؛ زندگی برایم پوچ و بی‌معنا شد. با خود می‌گفتم این چه دنیایی است که عزیزترین‌های آدم را می‌گیرد؟ اگر بیشتر زندگی کنم، مرگِ دیگر کسانی را که دوست دارم بیشتر خواهم دید. طاقت نداشتم و همش آرزو می‌کردم کاش من نیز به پیشگاه آن‌ها می‌رفتم. انگار می‌خواستم تیشه به ریشهٔ زندگی‌ام بزنم؛ همه‌چیز را از بین ببرم تا به صفر برسم، دق کنم و از این دنیا بروم. چنان سقوط کردم که به خاکستر نشستم.\n\nتا اینکه روزی در آینه نگاه کردم؛ روزی که حتی صورت خودم را به‌درستی در آن نمی‌دیدم. رو به خود کردم و گفتم: «تا کی؟ تو کجا و ناامیدی کجا؟ دنیا همیشه بر وقف مراد همه نبوده است. قوی باش؛ اگر کسی بلده خراب کند، شاید به همان اندازه ساختن را بلد نباشد، اما تلاش خودت را بکن. کسی غیر از خودت برای تو نخواهد ساخت. یاد بگیر که دیگر نه پدر داری و نه مادر؛ تو هستی، خدای خودت، و خواهر و برادرهایت.»\n\nدر آن لحظه، عهدی بستم تا روزی که در پیشگاه خدا و در معیت پدر و مادرم سرم را بالا بگیرم و بگویم: «مادر، پدر، سلام؛ سربلند آمدم پیش خدای مهربان.»\n\nهمان‌جا فهمیدم که اگر به خودم خوبی کنم، به همه‌ی دنیا خوبی کرده‌ام. تا پیش از آن گمان می‌کردم باید دیگران را به دست آورد و راضی کرد؛ اما حقیقت این است که باید با خودت دوست باشی، با خودت مهربان باشی، برای خودت گذشت کنی و ایثار کنی. فهمیدم که در اجتماع زندگی می‌کنیم، اما مسیر رشد و خودشناسی را هرکس باید در خلوت خود و با صداقت با خویشتن بپیماید.",
+                    textEn = "After my mother left and my dear father passed away months later, I broke inward; life became hollow and meaningless. I wondered what world this was that takes away our dearest ones. Wanting to destroy my life down to zero, I hit rock bottom and sat in ashes.\n\nUntil one day, looking into a mirror where I couldn't even see my own face clearly, I said to myself: 'Until when? Be strong; if someone knows how to destroy, perhaps they don't know how to build as well, but make the effort. No one will build for you except yourself. Learn that you no longer have father or mother; you have God, yourself, and your siblings.'\n\nAt that moment, I made a pledge to hold my head high before God and my parents one day and say: 'Mother, Father, hello; I came before the Merciful God with honor.'\n\nRight there I realized that doing good to oneself is doing good to the whole world. I always thought we must win over others; but the truth is you must be friends with yourself, be kind to yourself, forgive and sacrifice for yourself. We live in society, but the path of growth and self-knowledge must be walked sincerely with oneself alone.",
+                  ),
+                ),
+            ),
           ),
       ),
       Chapter(

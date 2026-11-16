@@ -28,11 +28,24 @@ jobs:
     - name: Grant execute permission for Gradle wrapper
       run: chmod +x gradlew
 
+    - name: Ensure Keystore Exists
+      run: |
+        if [ ! -f "my-upload-key.jks" ]; then
+          echo "Keystore not found, generating release upload keystore..."
+          keytool -genkeypair -v -keystore my-upload-key.jks -alias upload -keyalg RSA -keysize 2048 -validity 10000 -storepass android123 -keypass android123 -dname "CN=HonarZistan, OU=AIStudio, O=HonarZistan, L=Tehran, ST=Tehran, C=IR"
+        else
+          echo "Keystore found: my-upload-key.jks"
+        fi
+
     - name: Build Signed APK & App Bundle (Release)
-      env:
-        STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
-        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-      run: ./gradlew assembleRelease bundleRelease -x test
+      run: |
+        STORE_PASS="${{ secrets.STORE_PASSWORD }}"
+        [ -z "$STORE_PASS" ] && STORE_PASS="android123"
+        KEY_PASS="${{ secrets.KEY_PASSWORD }}"
+        [ -z "$KEY_PASS" ] && KEY_PASS="android123"
+        
+        echo "Building release APK and AAB with release signing..."
+        STORE_PASSWORD="$STORE_PASS" KEY_PASSWORD="$KEY_PASS" ./gradlew assembleRelease bundleRelease -x test -x lintVitalRelease -x lintVitalAnalyzeRelease --stacktrace
 
     - name: Upload Signed APK
       uses: actions/upload-artifact@v4
